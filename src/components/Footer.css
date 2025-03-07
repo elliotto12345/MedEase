@@ -1,0 +1,91 @@
+.footer {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer .demo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  background-color: whitesmoke;
+  padding: 70px;
+}
+
+.footer .demo p {
+  font-size: 30px;
+}
+
+.footer .demo button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 18px;
+  background-color: purple;
+  text-align: center;
+  border: none;
+  border-radius: 5px;
+  padding: 15px;
+  color: white;
+}
+.footer .bottom {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  padding: 50px;
+  gap: 25px;
+  background-color: purple;
+  color: white;
+}
+
+.bottom .column-one {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  padding: 25px;
+}
+
+.bottom .column-two {
+  display: flex;
+  gap: 20px;
+  padding: 25px;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.column-two .right,
+.column-two .left {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.column-two .right p:nth-child(1),
+.column-two .left p:nth-child(1),
+.column-three p {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.column-three {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 25px;
+}
+
+.column-three .input {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 70%;
+  background-color: rgba(167, 136, 167, 0.468);
+  border-radius: 5px;
+}
+
+.column-three .input input {
+  background-color: transparent;
+  border: none;
+}
