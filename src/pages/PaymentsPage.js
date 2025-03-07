@@ -1,12 +1,12 @@
 import Sidebar from "../components/Sidebar";
 
-const AppointmentsPage = () => {
+const PaymentsPage = () => {
   return (
     <div style={{ display: "flex" }}>
       <Sidebar />
-      Appointments
+      Payments
     </div>
   );
 };
 
-export default AppointmentsPage;
+export default PaymentsPage;

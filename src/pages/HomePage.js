@@ -1,17 +1,27 @@
-import React from 'react';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
-import AppointmentTable from '../components/AppointmentTable';
+import React from "react";
+import LandingPage from "../components/LandingPage";
+import Navbar from "../components/Navbar";
+import Home from "../components/Home";
+import Sidebar from "../components/Sidebar";
 
 const HomePage = () => {
-    return (
-        <div>
-            <Navbar />
-            <h1>Welcome to MedEase</h1>
-            <AppointmentTable appointments={[]} /> {/* Replace with actual appointments data */}
-            <Footer />
+  const singIn = true;
+  return (
+    <>
+      {singIn ? (
+        <div style={{ display: "flex" }}>
+          <Sidebar />
+          <Home />
         </div>
-    );
+      ) : (
+        <>
+          {" "}
+          <Navbar />
+          <LandingPage />
+        </>
+      )}
+    </>
+  );
 };
 
 export default HomePage;
