@@ -1,12 +1,12 @@
 import Sidebar from "../components/Sidebar";
 
-const AppointmentsPage = () => {
+const SettingsPage = () => {
   return (
     <div style={{ display: "flex" }}>
       <Sidebar />
-      Appointments
+      Settings
     </div>
   );
 };
 
-export default AppointmentsPage;
+export default SettingsPage;
