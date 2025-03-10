@@ -7,9 +7,15 @@ const Navbar = () => {
     <nav className="navbar">
       <div className="logo">
         <Link to="/">
-          <p>
+          {/* <p>
             Med<span style={{ color: "purple" }}>Ease</span>
-          </p>
+          </p> */}
+          <img
+            src="/assets/MedEaseLogo.png"
+            alt="logo"
+            width={50}
+            height={50}
+          />
         </Link>
       </div>
       <div className="nav-links">
@@ -32,11 +38,11 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="status">
-        <Link to="/login">
-          <button>Sign Up</button>
+        <Link to="/signup">
+          <button className="sign-up">Sign Up</button>
         </Link>
         <Link to="/login">
-          <button>Login</button>
+          <button className="log-in">Login</button>
         </Link>
       </div>
     </nav>
