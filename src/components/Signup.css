@@ -1,14 +1,81 @@
-.signup-form {
-    display: flex;
-    flex-direction: column;
-    width: 300px;
-    margin: auto;
+.sign-up {
+  display: flex;
 }
 
-.signup-form input {
-    margin-bottom: 10px;
+.sign-up .image {
+  width: 50%;
+  height: 100vh;
 }
 
-.signup-form button {
-    margin-top: 10px;
+.sign-up .image img {
+  height: 100%;
+  width: 100%;
+  object-fit: fill;
+}
+
+.sign-up .form {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.sign-up .form form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.sign-up .form form div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.sign-up .form form div:nth-child(5) img {
+  position: absolute;
+  left: 400px;
+}
+
+.sign-up .form form label,
+.sign-up .form form select {
+  font-size: 18px;
+  padding: 8px;
+}
+
+.sign-up .form form a {
+  margin-left: auto;
+  width: 80%;
+  margin-bottom: 20px;
+}
+
+.sign-up .form form input:not([type="checkbox"]) {
+  padding: 20px;
+  font-size: 18px;
+  width: 60%;
+  background-color: rgb(188, 188, 188);
+  border: none;
+}
+
+.sign-up .form form input[type="checkbox"] {
+  width: 25px;
+  height: 25px;
+}
+
+.sign-up .form form button {
+  padding: 10px;
+  background-color: purple;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  width: 30%;
+  border: none;
+  border-radius: 5px;
 }

@@ -22,7 +22,7 @@
   align-items: center;
 }
 
-.form form {
+.login .form form {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -31,50 +31,31 @@
   gap: 25px;
 }
 
-.form form div {
+.login .form form div {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  /* background-color: rgb(188, 188, 188); */
 }
 
-.form form div:nth-child(3) img {
+.login .form form div:nth-child(2) img {
   position: absolute;
-  right: 155px;
+  right: 145px;
 }
 
-/* .form form div:nth-child(3) {
-  width: 60%;
-  background-color: rgb(188, 188, 188);
-  justify-content: space-between;
-  padding-right: 8px;
-} */
-
-.form form label,
-.form form select {
+.login .form form label,
+.login .form form select {
   font-size: 18px;
   padding: 8px;
 }
 
-.form form a {
+.login .form form a {
   margin-left: auto;
   width: 80%;
   margin-bottom: 20px;
 }
 
-/* .form form div:nth-child(3) {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.form form div:nth-child(3) p {
-  text-align: left;
-} */
-
-.form form input {
+.login .form form input:not([type="checkbox"]) {
   padding: 20px;
   font-size: 18px;
   width: 60%;
@@ -82,7 +63,7 @@
   border: none;
 }
 
-.form form button {
+.login .form form button {
   padding: 10px;
   background-color: purple;
   color: white;

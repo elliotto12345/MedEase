@@ -3,38 +3,19 @@
   flex-direction: column;
 }
 
-.footer .demo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-  background-color: whitesmoke;
-  padding: 70px;
+.signIn-bg {
+  background-color: rgb(105, 103, 103);
 }
 
-.footer .demo p {
-  font-size: 30px;
-}
-
-.footer .demo button {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 18px;
+.signOut-bg {
   background-color: purple;
-  text-align: center;
-  border: none;
-  border-radius: 5px;
-  padding: 15px;
-  color: white;
 }
+
 .footer .bottom {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   padding: 50px;
   gap: 25px;
-  background-color: purple;
   color: white;
 }
 
@@ -81,8 +62,15 @@
   align-items: center;
   justify-content: space-between;
   width: 70%;
-  background-color: rgba(167, 136, 167, 0.468);
   border-radius: 5px;
+}
+
+.signOut-input-color {
+  background-color: rgb(139, 65, 139);
+}
+
+.signIn-input-color {
+  background-color: rgb(170, 170, 170);
 }
 
 .column-three .input input {

@@ -1,5 +1,5 @@
 import React from "react";
-import "./LandingPage.css"; // Assuming you have a CSS file for styling
+import "./LandingPage.css";
 import Footer from "./Footer";
 
 const Home = () => {
@@ -144,6 +144,12 @@ const Home = () => {
             <button>Learn More</button>
           </div>
         </div>
+      </div>
+      <div className="demo">
+        <p> Send Us An E-mail And Try Our New App Demo</p>
+        <button>
+          Get a Demo <img src="/assets/Right.png" alt="rights" />{" "}
+        </button>
       </div>
       <Footer />
     </div>

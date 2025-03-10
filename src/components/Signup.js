@@ -1,58 +1,75 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import './Signup.css';
+import { useState } from "react";
+import "./Signup.css";
 
 const Signup = () => {
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [phone, setPhone] = useState('');
-    const [dob, setDob] = useState('');
-    const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
+  return (
+    <div className="sign-up">
+      <div className="form">
+        <h1>
+          Med<span style={{ color: "purple" }}>Ease</span> SignUp
+        </h1>
+        <form>
+          <div>
+            <label>Select Role:</label>
+            <select>
+              <option value="patient">Patient</option>
+              <option value="doctor">Doctor</option>
+              <option value="admin">Admin</option>
+            </select>
+          </div>
+          <div>
+            <input type="text" placeholder="Last Name" required />
+          </div>
+          <div>
+            <input type="text" placeholder="First Name" required />
+          </div>
+          <div>
+            <input type="email" placeholder="Email" required />
+          </div>
+          <div>
+            <input
+              type={showPassword ? "text" : "password"}
+              placeholder="Password"
+              required
+            />
+            {showPassword ? (
+              <img
+                src="/assets/show.png"
+                onClick={() => setShowPassword(false)}
+                alt="show"
+                width={30}
+                height={30}
+              />
+            ) : (
+              <img
+                src="/assets/Hide.png"
+                onClick={() => setShowPassword(true)}
+                alt="hide"
+                width={30}
+                height={30}
+              />
+            )}
+          </div>
+          <div>
+            <input type="checkbox" />
+            <p>Yes, I agree to the terms and policy of MedEase</p>
+          </div>
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        if (!name || !email || !password || !phone || !dob) {
-            alert('Please fill in all the required fields.');
-            return;
-        }
-        try {
-            const response = await fetch('/api/register', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ name, email, password, phone, dob }),
-            });
-            const data = await response.json();
-            if (!response.ok) {
-                console.error('Registration failed:', data.message);
-                alert('Registration failed: ' + data.message);
-                return;
-            }
-            if (data.success) {
-                alert('Registration successful! You can now log in.');
-                navigate('/login');
-            } else {
-                alert('Registration failed. Please try again.');
-            }
-        } catch (error) {
-            console.error('Error during registration:', error);
-            alert('Registration failed. Please try again.');
-        }
-    };
-
-    return (
-        <div>
-            <h2>Signup</h2>
-            <form className="signup-form" onSubmit={handleSubmit}>
-                <input type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} required />
-                <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-                <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-                <input type="tel" placeholder="Phone Number" value={phone} onChange={(e) => setPhone(e.target.value)} required />
-                <input type="date" placeholder="Date of Birth" value={dob} onChange={(e) => setDob(e.target.value)} required />
-                <button type="submit">Sign Up</button>
-            </form>
-        </div>
-    );
+          <button type="submit">Sign Up</button>
+        </form>
+        {/* <p>
+          Don't have an account yet?{" "}
+          <Link to="/login" style={{ color: "purple" }}>
+            Sign up
+          </Link>
+        </p> */}
+      </div>
+      <div className="image">
+        <img src="/assets/login.png" alt="login" />
+      </div>
+    </div>
+  );
 };
 
 export default Signup;

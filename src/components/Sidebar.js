@@ -1,19 +1,16 @@
 import { Link, useLocation } from "react-router-dom";
 import "./Sidebar.css";
-import { useEffect } from "react";
 
 const Sidebar = () => {
   const location = useLocation();
   let routeName = location.pathname;
-  useEffect(() => {
-    console.log(location.pathname);
-  }, []);
   return (
     <div className="sidebar">
       <div className="logo">
-        <p>
+        {/* <p>
           <span style={{ color: "rgb(99, 99, 99)" }}>Med</span>Ease
-        </p>
+        </p> */}
+        <img src="/assets/MedEaseLogo.png" alt="logo" />
       </div>
       <div className="menus">
         <Link
