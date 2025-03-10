@@ -2,15 +2,10 @@ import React from "react";
 import "./Footer.css";
 
 const Footer = () => {
+  let singIn = true;
   return (
     <div className="footer">
-      <div className="demo">
-        <p> Send Us An E-mail And Try Our New App Demo</p>
-        <button>
-          Get a Demo <img src="/assets/Right.png" alt="rights" />{" "}
-        </button>
-      </div>
-      <div className="bottom">
+      <div className={`bottom ${singIn ? "signIn-bg" : "signOut-bg"}`}>
         <div className="column-one">
           <p>
             Copyright © 2025 MedEase ltd. <br />
@@ -38,7 +33,11 @@ const Footer = () => {
         </div>
         <div className="column-three">
           <p>Stay up to date</p>
-          <div className="input">
+          <div
+            className={`input ${
+              singIn ? "signIn-input-color" : "signOut-input-color"
+            }`}
+          >
             <input type="text" />
             <img src="/assets/send.png" alt="send" />
           </div>

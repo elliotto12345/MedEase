@@ -14,14 +14,14 @@ const Login = () => {
           Med<span style={{ color: "purple" }}>Ease</span> Login
         </h1>
         <form>
-          <div>
+          {/* <div>
             <label>Select Role:</label>
             <select>
               <option value="patient">Patient</option>
               <option value="doctor">Doctor</option>
               <option value="admin">Admin</option>
             </select>
-          </div>
+          </div> */}
           <div>
             <input type="text" placeholder="Username" required />
           </div>
@@ -55,7 +55,7 @@ const Login = () => {
         </form>
         <p>
           Don't have an account yet?{" "}
-          <Link to="/login" style={{ color: "purple" }}>
+          <Link to="/signup" style={{ color: "purple" }}>
             Sign up
           </Link>
         </p>

@@ -1,0 +1,50 @@
+.settings {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 25px;
+  gap: 25px;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.settings img {
+  width: 50px;
+  object-fit: contain;
+}
+
+.settings div {
+  width: 100%;
+  display: flex;
+  gap: 25px;
+}
+
+.settings .go-back {
+  align-items: center;
+  gap: 10px;
+}
+
+.settings .go-back p {
+  font-size: 26px;
+}
+
+.settings div .text {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.settings div .text p {
+  font-size: 18px;
+  text-align: left;
+}
+
+.settings button {
+  padding: 15px;
+  background-color: purple;
+  color: white;
+  font-size: 20px;
+  border: none;
+  border-radius: 8px;
+  width: 30%;
+}
