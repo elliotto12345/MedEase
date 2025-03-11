@@ -3,13 +3,13 @@
   flex-direction: column;
 }
 
-.signIn-bg {
+/* .signIn-bg {
   background-color: rgb(105, 103, 103);
 }
 
 .signOut-bg {
   background-color: purple;
-}
+} */
 
 .footer .bottom {
   display: grid;
@@ -17,6 +17,7 @@
   padding: 50px;
   gap: 25px;
   color: white;
+  background-color: purple;
 }
 
 .bottom .column-one {
@@ -63,15 +64,16 @@
   justify-content: space-between;
   width: 70%;
   border-radius: 5px;
+  background-color: rgb(139, 65, 139);
 }
 
-.signOut-input-color {
+/* .signOut-input-color {
   background-color: rgb(139, 65, 139);
 }
 
 .signIn-input-color {
   background-color: rgb(170, 170, 170);
-}
+} */
 
 .column-three .input input {
   background-color: transparent;

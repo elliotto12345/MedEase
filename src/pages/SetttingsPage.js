@@ -9,7 +9,6 @@ const SettingsPage = () => {
         <Sidebar />
         <Settings />
       </div>
-      <Footer />
     </>
   );
 };
