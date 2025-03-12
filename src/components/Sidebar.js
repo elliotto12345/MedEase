@@ -86,7 +86,7 @@ const Sidebar = () => {
         </Link>
       </div>
       
-      <nav className="menu-items">
+      {/* <nav className="menu-items">
         <Link to="/" className="menu-item">
           <img src={process.env.PUBLIC_URL + "/assets/Home-page.png"} alt="" className="nav-icon" />
           <span>Home</span>
@@ -107,7 +107,7 @@ const Sidebar = () => {
           <img src={process.env.PUBLIC_URL + "/assets/Settings.png"} alt="" className="nav-icon" />
           <span>Settings</span>
         </Link>
-      </nav>
+      </nav> */}
     </div>
   );
 }

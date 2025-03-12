@@ -1,6 +1,11 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import "./App.css";
+import ChatSession from "./components/ChatSession";
+import Consultation from "./components/Consultation";
+import AppointmentBooking from "./components/AppointmentBooking";
+import AppointmentPreview from "./components/AppointmentPreview";
+import AppointmentList from "./components/AppointmentList";
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import AppointmentsPage from "./pages/AppointmentsPage";

@@ -6,7 +6,7 @@ import Sidebar from "../components/Sidebar";
 import Footer from "../components/Footer";
 
 const HomePage = () => {
-  const singIn = true;
+  const singIn = false;
   return (
     <>
       {singIn ? (
