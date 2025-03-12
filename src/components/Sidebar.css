@@ -1,11 +1,20 @@
 .sidebar {
   width: 250px;
   min-height: 100vh;
-  background-color: #800080;
-  padding: 80px 0;
+  align-items: center;
   display: flex;
   flex-direction: column;
-  color: white;
+  background-color: #660066;
+}
+
+.sidebar .logo {
+  padding: 35px 25px;
+}
+
+.sidebar .logo img {
+  object-fit: contain;
+  width: 80px;
+  height: auto;
 }
 
 .logo-container {
