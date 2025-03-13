@@ -19,7 +19,7 @@ const Login = () => {
       alert("Login successful!");
       navigate("/appointments");
     } catch (error) {
-      setError(error.message); // Show detailed error message
+      setError(error.message);
     }
   };
 

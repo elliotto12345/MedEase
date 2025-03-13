@@ -1,0 +1,122 @@
+.appointments-list-page {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-left: 250px;
+  min-height: 100vh;
+}
+
+.appointments-list-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background-color: #800080;
+  padding: 20px;
+  color: white;
+}
+
+.appointments-list-header h1 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: normal;
+}
+
+.circle-back {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: white;
+}
+
+.circle-back:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.appointments-table {
+  flex: 1;
+  background-color: white;
+  padding: 20px;
+}
+
+.table-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 2fr 1fr;
+  padding: 15px 20px;
+  border-bottom: 1px solid #eee;
+  font-weight: 500;
+  color: #333;
+}
+
+.table-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 2fr 1fr;
+  padding: 15px 20px;
+  border-bottom: 1px solid #eee;
+  align-items: center;
+}
+
+.status-col {
+  color: #666;
+}
+
+.status-col.success {
+  color: #008000;
+}
+
+.status-col.pending {
+  color: #666;
+}
+
+.date-col, .time-col, .details-col {
+  color: #333;
+}
+
+.delete-btn {
+  padding: 8px 24px;
+  background-color: #ff0000;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.completed-btn {
+  padding: 8px 24px;
+  background-color: #008000;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.delete-btn:hover {
+  background-color: #cc0000;
+}
+
+.completed-btn:hover {
+  background-color: #006600;
+}
+
+@media (max-width: 768px) {
+  .appointments-list-page {
+    margin-left: 0;
+  }
+
+  .table-header, .table-row {
+    grid-template-columns: 1fr 1fr 1fr 1.5fr 0.8fr;
+    padding: 15px 10px;
+    font-size: 14px;
+  }
+
+  .delete-btn, .completed-btn {
+    padding: 6px 16px;
+    font-size: 12px;
+  }
+} 

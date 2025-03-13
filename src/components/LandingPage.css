@@ -59,7 +59,7 @@
 /* Service */
 .service .header {
   font-size: 20px;
-  text-align: center;
+  text-align: center !important;
   color: rgb(90, 90, 90);
 }
 
