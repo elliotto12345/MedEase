@@ -1,6 +1,6 @@
 import Sidebar from "../components/Sidebar";
 import Settings from "../components/Settings";
-import Footer from "../components/Footer";
+// import Footer from "../components/Footer";
 
 const SettingsPage = () => {
   return (
