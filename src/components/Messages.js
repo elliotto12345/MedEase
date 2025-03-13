@@ -8,24 +8,30 @@ const Messages = () => {
   const messages = [
     {
       id: 1,
-      doctor: "Dr. Darkwah Martha Kinih",
+      name: "Dr. Darkwah Martha Kinih",
       message: "Pls I'm almost done with the medication",
       time: "11:54",
-      image: "/assets/dc_2.png"
+      image: "/assets/dc_2.png",
+      status: "Online",
+      specialty: "General Physician"
     },
     {
       id: 2,
-      doctor: "Dr. Samuel Katey",
+      name: "Dr. Samuel Katey",
       message: "Pls my stomach hurts what do you advice i do",
       time: "11:54",
-      image: "/assets/dc_3.png"
+      image: "/assets/dc_3.png",
+      status: "Offline",
+      specialty: "Gastroenterologist"
     },
     {
       id: 3,
-      doctor: "Dr. Abdul Basit",
+      name: "Dr. Abdul Basit",
       message: "Pls can you resend the prescription",
       time: "Yesterday",
-      image: "/assets/dc_4.png"
+      image: "/assets/dc_4.png",
+      status: "Busy",
+      specialty: "Pharmacist"
     }
   ];
 
@@ -42,11 +48,15 @@ const Messages = () => {
 
       <div className="messages-list">
         {messages.map((msg) => (
-          <div key={msg.id} className="message-item" onClick={() => navigate('/messages/consultation')}>
+          <div 
+            key={msg.id} 
+            className="message-item" 
+            onClick={() => navigate('/messages/consultation', { state: { doctor: msg } })}
+          >
             <div className="message-left">
-              <img src={msg.image} alt={msg.doctor} className="doctor-image" />
+              <img src={msg.image} alt={msg.name} className="doctor-image" />
               <div className="message-content">
-                <h3>{msg.doctor}</h3>
+                <h3>{msg.name}</h3>
                 <p>{msg.message}</p>
               </div>
             </div>
@@ -55,11 +65,14 @@ const Messages = () => {
         ))}
       </div>
 
-      <button className="new-chat-button" onClick={() => navigate('/messages/consultation')}>
+      <button 
+        className="new-chat-button" 
+        onClick={() => navigate('/messages/consultation', { state: { doctor: null } })}
+      >
         New Chat
       </button>
     </div>
   );
 };
 
-export default Messages; 
+export default Messages;
