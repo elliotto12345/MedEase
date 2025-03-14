@@ -1,12 +1,14 @@
+import Payment from "../components/Payment"; // Import Payment component
+import "../components/Payment.css"; // Import Payment styles
 import Sidebar from "../components/Sidebar";
 
-const PaymentsPage = () => {
+const PaymentPage = () => {
   return (
     <div style={{ display: "flex" }}>
       <Sidebar />
-      Payments
+      <Payment />
     </div>
   );
 };
 
-export default PaymentsPage;
+export default PaymentPage;

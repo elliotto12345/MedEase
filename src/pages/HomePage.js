@@ -1,7 +1,7 @@
 import React from "react";
+import Home from "../components/Home";
 import LandingPage from "../components/LandingPage";
 import Navbar from "../components/Navbar";
-import Home from "../components/Home";
 import Sidebar from "../components/Sidebar";
 import Footer from "../components/Footer";
 

@@ -1,9 +1,28 @@
+import { signInWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { auth } from "../firebaseConfig"; // Firebase import
 import "./Login.css";
-import { Link } from "react-router-dom";
 
 const Login = () => {
-  const [showPassword, setShowPassword] = useState(null);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    setError("");
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      alert("Login successful!");
+      navigate("/appointments");
+    } catch (error) {
+      setError(error.message);
+    }
+  };
+
   return (
     <div className="login">
       <div className="image">
@@ -13,44 +32,35 @@ const Login = () => {
         <h1>
           Med<span style={{ color: "purple" }}>Ease</span> Login
         </h1>
-        <form>
-          {/* <div>
-            <label>Select Role:</label>
-            <select>
-              <option value="patient">Patient</option>
-              <option value="doctor">Doctor</option>
-              <option value="admin">Admin</option>
-            </select>
-          </div> */}
+        {error && <p style={{ color: "red" }}>{error}</p>}
+        <form onSubmit={handleLogin}>
           <div>
-            <input type="text" placeholder="Username" required />
+            <input
+              type="email"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
           </div>
-          <div>
+          <div className="password-field">
             <input
               type={showPassword ? "text" : "password"}
               placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               required
             />
-            {showPassword ? (
-              <img
-                src="/assets/show.png"
-                onClick={() => setShowPassword(false)}
-                alt="show"
-                width={30}
-                height={30}
-              />
-            ) : (
-              <img
-                src="/assets/Hide.png"
-                onClick={() => setShowPassword(true)}
-                alt="hide"
-                width={30}
-                height={30}
-              />
-            )}
+            <img
+              src={showPassword ? "/assets/show.png" : "/assets/hide.png"}
+              onClick={() => setShowPassword(!showPassword)}
+              alt={showPassword ? "show" : "hide"}
+              width={30}
+              height={30}
+              style={{ cursor: "pointer" }}
+            />
           </div>
-          <Link to="/">Forgot password</Link>
-
+          <Link to="/password-reset">Forgot Password?</Link>
           <button type="submit">Login</button>
         </form>
         <p>
