@@ -7,14 +7,11 @@ const Navbar = () => {
     <nav className="navbar">
       <div className="logo">
         <Link to="/">
-          {/* <p>
-            Med<span style={{ color: "purple" }}>Ease</span>
-          </p> */}
           <img
-            src="/assets/MedEaseLogo.png"
+            src="/assets/navbar-logo.png"
             alt="logo"
-            width={50}
-            height={50}
+            width={65}
+            height={65}
           />
         </Link>
       </div>

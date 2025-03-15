@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import './AppointmentBooking.css';
+import React, { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import "./AppointmentBooking.css";
 
 const AppointmentBooking = () => {
   const navigate = useNavigate();
@@ -9,42 +9,42 @@ const AppointmentBooking = () => {
 
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
-    doctor: '',
-    date: '',
-    time: '',
-    appointmentType: '',
-    reason: ''
+    doctor: "",
+    date: "",
+    time: "",
+    appointmentType: "",
+    reason: "",
   });
 
   // Mock available doctors with their schedules
   const doctors = [
-    { 
-      id: 1, 
+    {
+      id: 1,
       name: specialty?.doctorName || "Dr. Sarah Johnson",
       specialty: specialty?.name || "Dermatologist",
       availability: {
         "2024-02-07": ["09:00 AM", "10:00 AM", "02:00 PM"],
-        "2024-02-08": ["09:30 AM", "11:00 AM", "03:30 PM"]
-      }
+        "2024-02-08": ["09:30 AM", "11:00 AM", "03:30 PM"],
+      },
     },
-    { 
-      id: 2, 
+    {
+      id: 2,
       name: "Dr. Michael Chen",
       specialty: specialty?.name || "Optometrist",
       availability: {
         "2024-02-09": ["10:00 AM", "02:30 PM", "04:00 PM"],
-        "2024-02-10": ["09:00 AM", "11:00 AM", "02:00 PM"]
-      }
+        "2024-02-10": ["09:00 AM", "11:00 AM", "02:00 PM"],
+      },
     },
-    { 
-      id: 3, 
+    {
+      id: 3,
       name: "Dr. Emily Brown",
       specialty: specialty?.name || "Radiologist",
       availability: {
         "2024-02-07": ["09:30 AM", "02:00 PM", "03:30 PM"],
-        "2024-02-11": ["10:00 AM", "11:00 AM", "04:00 PM"]
-      }
-    }
+        "2024-02-11": ["10:00 AM", "11:00 AM", "04:00 PM"],
+      },
+    },
   ];
 
   // State for available time slots
@@ -53,60 +53,60 @@ const AppointmentBooking = () => {
   // Update available time slots when date or doctor changes
   useEffect(() => {
     if (formData.doctor && formData.date) {
-      const selectedDoctor = doctors.find(d => d.name === formData.doctor);
+      const selectedDoctor = doctors.find((d) => d.name === formData.doctor);
       const slots = selectedDoctor?.availability[formData.date] || [];
       setAvailableTimeSlots(slots);
-      
+
       // Clear selected time if it's not available
       if (!slots.includes(formData.time)) {
-        setFormData(prev => ({ ...prev, time: '' }));
+        setFormData((prev) => ({ ...prev, time: "" }));
       }
     }
   }, [formData.doctor, formData.date]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
   const handleNext = () => {
-    setStep(prev => prev + 1);
+    setStep((prev) => prev + 1);
   };
 
   const handleBack = () => {
     if (step === 1) {
-      navigate('/appointments');
+      navigate("/appointments");
     } else {
-      setStep(prev => prev - 1);
+      setStep((prev) => prev - 1);
     }
   };
 
   const handleSubmit = () => {
-    const selectedDoctor = doctors.find(d => d.name === formData.doctor);
+    const selectedDoctor = doctors.find((d) => d.name === formData.doctor);
     const appointment = {
       specialty: selectedDoctor.specialty,
       doctorName: formData.doctor,
-      date: new Date(formData.date).toLocaleDateString('en-GB', {
-        day: 'numeric',
-        month: 'long',
-        year: 'numeric'
+      date: new Date(formData.date).toLocaleDateString("en-GB", {
+        day: "numeric",
+        month: "long",
+        year: "numeric",
       }),
       time: formData.time,
       hospital: specialty?.hospital || "KNUST hospital",
       office: specialty?.office || "Room 17, 1st floor",
       type: formData.appointmentType,
-      reason: formData.reason
+      reason: formData.reason,
     };
 
-    navigate('/appointment-preview', { state: { appointment } });
+    navigate("/appointments/preview", { state: { appointment } });
   };
 
   // Get available dates for the selected doctor
   const getAvailableDates = () => {
-    const selectedDoctor = doctors.find(d => d.name === formData.doctor);
+    const selectedDoctor = doctors.find((d) => d.name === formData.doctor);
     return selectedDoctor ? Object.keys(selectedDoctor.availability) : [];
   };
 
@@ -120,19 +120,19 @@ const AppointmentBooking = () => {
       </div>
 
       <div className="booking-progress">
-        <div className={`progress-step ${step >= 1 ? 'active' : ''}`}>
+        <div className={`progress-step ${step >= 1 ? "active" : ""}`}>
           <div className="step-number">1</div>
           <span>Select Doctor</span>
         </div>
-        <div className={`progress-step ${step >= 2 ? 'active' : ''}`}>
+        <div className={`progress-step ${step >= 2 ? "active" : ""}`}>
           <div className="step-number">2</div>
           <span>Date & Time</span>
         </div>
-        <div className={`progress-step ${step >= 3 ? 'active' : ''}`}>
+        <div className={`progress-step ${step >= 3 ? "active" : ""}`}>
           <div className="step-number">3</div>
           <span>Appointment Type</span>
         </div>
-        <div className={`progress-step ${step >= 4 ? 'active' : ''}`}>
+        <div className={`progress-step ${step >= 4 ? "active" : ""}`}>
           <div className="step-number">4</div>
           <span>Reason</span>
         </div>
@@ -142,20 +142,20 @@ const AppointmentBooking = () => {
         {step === 1 && (
           <div className="form-step">
             <h2>Select Doctor</h2>
-            <select 
-              name="doctor" 
+            <select
+              name="doctor"
               value={formData.doctor}
               onChange={handleInputChange}
               required
             >
               <option value="">Choose a doctor</option>
-              {doctors.map(doctor => (
+              {doctors.map((doctor) => (
                 <option key={doctor.id} value={doctor.name}>
                   {doctor.name} - {doctor.specialty}
                 </option>
               ))}
             </select>
-            <button 
+            <button
               className="next-btn"
               onClick={handleNext}
               disabled={!formData.doctor}
@@ -178,18 +178,18 @@ const AppointmentBooking = () => {
               required
             >
               <option value="">Select date</option>
-              {getAvailableDates().map(date => (
+              {getAvailableDates().map((date) => (
                 <option key={date} value={date}>
-                  {new Date(date).toLocaleDateString('en-US', {
-                    weekday: 'long',
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric'
+                  {new Date(date).toLocaleDateString("en-US", {
+                    weekday: "long",
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
                   })}
                 </option>
               ))}
             </select>
-            
+
             <select
               name="time"
               value={formData.time}
@@ -198,14 +198,18 @@ const AppointmentBooking = () => {
               disabled={!formData.date}
             >
               <option value="">Select time</option>
-              {availableTimeSlots.map(time => (
-                <option key={time} value={time}>{time}</option>
+              {availableTimeSlots.map((time) => (
+                <option key={time} value={time}>
+                  {time}
+                </option>
               ))}
             </select>
             {availableTimeSlots.length === 0 && formData.date && (
-              <p className="no-slots-message">No available time slots for this date</p>
+              <p className="no-slots-message">
+                No available time slots for this date
+              </p>
             )}
-            <button 
+            <button
               className="next-btn"
               onClick={handleNext}
               disabled={!formData.date || !formData.time}
@@ -240,7 +244,7 @@ const AppointmentBooking = () => {
                 <span>Virtual</span>
               </label>
             </div>
-            <button 
+            <button
               className="next-btn"
               onClick={handleNext}
               disabled={!formData.appointmentType}
@@ -260,7 +264,7 @@ const AppointmentBooking = () => {
               placeholder="Please describe your symptoms or reason for the appointment..."
               required
             />
-            <button 
+            <button
               className="submit-btn"
               onClick={handleSubmit}
               disabled={!formData.reason}
@@ -274,4 +278,4 @@ const AppointmentBooking = () => {
   );
 };
 
-export default AppointmentBooking; 
+export default AppointmentBooking;
