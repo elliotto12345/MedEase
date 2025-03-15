@@ -12,7 +12,7 @@ import LoginPage from "./pages/LoginPage";
 import MessagesPage from "./pages/MessagesPage";
 import PasswordResetPage from "./pages/PasswordResetPage";
 import PaymentsPage from "./pages/PaymentsPage";
-import SettingsPage from "./pages/SettingsPage";
+import SettingsPage from "./pages/SetttingsPage";
 import SignupPage from "./pages/SignupPage";
 
 function App() {
@@ -30,8 +30,14 @@ function App() {
           <Route path="/messages/chat" element={<ChatSession />} />
           <Route path="/messages/consultation" element={<Consultation />} />
           <Route path="/appointments" element={<AppointmentsPage />} />
-          <Route path="/appointment-booking" element={<AppointmentBooking />} />
-          <Route path="/appointment-preview" element={<AppointmentPreview />} />
+          <Route
+            path="/appointments/booking"
+            element={<AppointmentBooking />}
+          />
+          <Route
+            path="/appointments/preview"
+            element={<AppointmentPreview />}
+          />
           <Route path="/sessions" element={<AppointmentList />} />
         </Routes>
       </div>

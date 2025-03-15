@@ -2,7 +2,6 @@
   flex: 1;
   padding: 20px;
   height: 100vh;
-  margin-left: 250px;
   background-color: #fff;
   overflow-y: auto;
 }
@@ -41,7 +40,7 @@
 }
 
 .booking-progress::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 20px;
   left: 0;
@@ -239,4 +238,4 @@
   .submit-btn {
     width: 100%;
   }
-} 
+}

@@ -2,7 +2,6 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  margin-left: 250px;
   min-height: 100vh;
 }
 
@@ -72,7 +71,9 @@
   color: #666;
 }
 
-.date-col, .time-col, .details-col {
+.date-col,
+.time-col,
+.details-col {
   color: #333;
 }
 
@@ -109,14 +110,16 @@
     margin-left: 0;
   }
 
-  .table-header, .table-row {
+  .table-header,
+  .table-row {
     grid-template-columns: 1fr 1fr 1fr 1.5fr 0.8fr;
     padding: 15px 10px;
     font-size: 14px;
   }
 
-  .delete-btn, .completed-btn {
+  .delete-btn,
+  .completed-btn {
     padding: 6px 16px;
     font-size: 12px;
   }
-} 
+}
