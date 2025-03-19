@@ -62,7 +62,7 @@ const Payment = () => {
       </div>
       <div className="receipt-footer">
         <button className="pay-later">Pay Later</button>
-        <button className="confirm-pay">Confirm and Pay</button>
+        <button className="confirm-pay">Pay with Paystack</button>
       </div>
     </div>
   );
