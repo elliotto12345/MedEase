@@ -14,7 +14,6 @@ const AppointmentBooking = () => {
     time: "",
     appointmentType: "",
     reason: "",
-    phoneNumber: "",
   });
 
   // Mock available doctors with their schedules
@@ -48,38 +47,43 @@ const AppointmentBooking = () => {
     },
   ];
 
+  // State for available time slots
   const [availableTimeSlots, setAvailableTimeSlots] = useState([]);
 
-  // Update available time slots when doctor or date changes
+  // Update available time slots when date or doctor changes
   useEffect(() => {
     if (formData.doctor && formData.date) {
       const selectedDoctor = doctors.find((d) => d.name === formData.doctor);
       const slots = selectedDoctor?.availability[formData.date] || [];
       setAvailableTimeSlots(slots);
 
+      // Clear selected time if it's not available
       if (!slots.includes(formData.time)) {
         setFormData((prev) => ({ ...prev, time: "" }));
       }
     }
   }, [formData.doctor, formData.date]);
 
-  // Handle form input changes
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   };
 
-  // Get available dates for the selected doctor
-  const getAvailableDates = () => {
-    const selectedDoctor = doctors.find((d) => d.name === formData.doctor);
-    return selectedDoctor ? Object.keys(selectedDoctor.availability) : [];
+  const handleNext = () => {
+    setStep((prev) => prev + 1);
   };
 
-  // Handle navigation steps
-  const handleNext = () => setStep((prev) => prev + 1);
-  const handleBack = () => (step === 1 ? navigate("/appointments") : setStep((prev) => prev - 1));
+  const handleBack = () => {
+    if (step === 1) {
+      navigate("/appointments");
+    } else {
+      setStep((prev) => prev - 1);
+    }
+  };
 
-  // Handle form submission
   const handleSubmit = () => {
     const selectedDoctor = doctors.find((d) => d.name === formData.doctor);
     const appointment = {
@@ -95,10 +99,15 @@ const AppointmentBooking = () => {
       office: specialty?.office || "Room 17, 1st floor",
       type: formData.appointmentType,
       reason: formData.reason,
-      phoneNumber: formData.phoneNumber,
     };
 
     navigate("/appointments/preview", { state: { appointment } });
+  };
+
+  // Get available dates for the selected doctor
+  const getAvailableDates = () => {
+    const selectedDoctor = doctors.find((d) => d.name === formData.doctor);
+    return selectedDoctor ? Object.keys(selectedDoctor.availability) : [];
   };
 
   return (
@@ -111,21 +120,39 @@ const AppointmentBooking = () => {
       </div>
 
       <div className="booking-progress">
-        {["Select Doctor", "Date & Time", "Appointment Type", "Reason", "Phone Number"].map(
-          (label, index) => (
-            <div key={index} className={`progress-step ${step >= index + 1 ? "active" : ""}`}>
-              <div className="step-number">{index + 1}</div>
-              <span>{label}</span>
-            </div>
-          )
-        )}
+        <div className={`progress-step ${step >= 1 ? "active" : ""}`}>
+          <div className="step-number">1</div>
+          <span>Select Doctor</span>
+        </div>
+        <div className={`progress-step ${step >= 2 ? "active" : ""}`}>
+          <div className="step-number">2</div>
+          <span>Date & Time</span>
+        </div>
+        <div className={`progress-step ${step >= 3 ? "active" : ""}`}>
+          <div className="step-number">3</div>
+          <span>Appointment Type</span>
+        </div>
+        <div className={`progress-step ${step >= 4 ? "active" : ""}`}>
+          <div className="step-number">4</div>
+          <span>Reason</span>
+        </div>
+        <div className={`progress-step ${step >= 5 ? "active" : ""}`}>
+          <div className="step-number">5</div>
+          <span>Phone Number</span>
+        </div>
       </div>
+
 
       <div className="booking-form">
         {step === 1 && (
           <div className="form-step">
             <h2>Select Doctor</h2>
-            <select name="doctor" value={formData.doctor} onChange={handleInputChange} required>
+            <select
+              name="doctor"
+              value={formData.doctor}
+              onChange={handleInputChange}
+              required
+            >
               <option value="">Choose a doctor</option>
               {doctors.map((doctor) => (
                 <option key={doctor.id} value={doctor.name}>
@@ -133,7 +160,11 @@ const AppointmentBooking = () => {
                 </option>
               ))}
             </select>
-            <button className="next-btn" onClick={handleNext} disabled={!formData.doctor}>
+            <button
+              className="next-btn"
+              onClick={handleNext}
+              disabled={!formData.doctor}
+            >
               Next
             </button>
           </div>
@@ -142,7 +173,15 @@ const AppointmentBooking = () => {
         {step === 2 && (
           <div className="form-step">
             <h2>Select Date & Time</h2>
-            <select name="date" value={formData.date} onChange={handleInputChange} required>
+            <div className="date-time-info">
+              <p>Please select from available dates for {formData.doctor}</p>
+            </div>
+            <select
+              name="date"
+              value={formData.date}
+              onChange={handleInputChange}
+              required
+            >
               <option value="">Select date</option>
               {getAvailableDates().map((date) => (
                 <option key={date} value={date}>
@@ -156,7 +195,13 @@ const AppointmentBooking = () => {
               ))}
             </select>
 
-            <select name="time" value={formData.time} onChange={handleInputChange} required>
+            <select
+              name="time"
+              value={formData.time}
+              onChange={handleInputChange}
+              required
+              disabled={!formData.date}
+            >
               <option value="">Select time</option>
               {availableTimeSlots.map((time) => (
                 <option key={time} value={time}>
@@ -164,8 +209,16 @@ const AppointmentBooking = () => {
                 </option>
               ))}
             </select>
-
-            <button className="next-btn" onClick={handleNext} disabled={!formData.date || !formData.time}>
+            {availableTimeSlots.length === 0 && formData.date && (
+              <p className="no-slots-message">
+                No available time slots for this date
+              </p>
+            )}
+            <button
+              className="next-btn"
+              onClick={handleNext}
+              disabled={!formData.date || !formData.time}
+            >
               Next
             </button>
           </div>
@@ -174,13 +227,33 @@ const AppointmentBooking = () => {
         {step === 3 && (
           <div className="form-step">
             <h2>Appointment Type</h2>
-            {["In-person", "Virtual"].map((type) => (
-              <label key={type}>
-                <input type="radio" name="appointmentType" value={type} checked={formData.appointmentType === type} onChange={handleInputChange} />
-                <span>{type}</span>
+            <div className="appointment-types">
+              <label>
+                <input
+                  type="radio"
+                  name="appointmentType"
+                  value="In-person"
+                  checked={formData.appointmentType === "In-person"}
+                  onChange={handleInputChange}
+                />
+                <span>In-person</span>
               </label>
-            ))}
-            <button className="next-btn" onClick={handleNext} disabled={!formData.appointmentType}>
+              <label>
+                <input
+                  type="radio"
+                  name="appointmentType"
+                  value="Virtual"
+                  checked={formData.appointmentType === "Virtual"}
+                  onChange={handleInputChange}
+                />
+                <span>Virtual</span>
+              </label>
+            </div>
+            <button
+              className="next-btn"
+              onClick={handleNext}
+              disabled={!formData.appointmentType}
+            >
               Next
             </button>
           </div>
@@ -189,18 +262,41 @@ const AppointmentBooking = () => {
         {step === 4 && (
           <div className="form-step">
             <h2>Reason for Appointment</h2>
-            <textarea name="reason" value={formData.reason} onChange={handleInputChange} required />
-            <button className="next-btn" onClick={handleNext} disabled={!formData.reason}>
+            <textarea
+              name="reason"
+              value={formData.reason}
+              onChange={handleInputChange}
+              placeholder="Please describe your symptoms or reason for the appointment..."
+              required
+            />
+             <button
+              className="next-btn"
+              onClick={handleNext}
+              disabled={!formData.reason}
+            >
               Next
             </button>
           </div>
         )}
 
         {step === 5 && (
-          <div className="form-step">
-            <h2>Enter Your Phone Number</h2>
-            <input type="tel" name="phoneNumber" value={formData.phoneNumber} onChange={handleInputChange} required />
-            <button className="submit-btn" onClick={handleSubmit} disabled={!formData.phoneNumber}>
+          <div className="form-step phone-number-container">
+            <label htmlFor="phoneNumber">Enter Your Phone Number</label>
+            <input
+              type="tel"
+              id="phoneNumber"
+              name="phoneNumber"
+              value={formData.phoneNumber}
+              onChange={handleInputChange}
+              placeholder="e.g. +233 541234567"
+              className="phone-number-input"
+              required
+            />
+            <button
+              className="submit-btn"
+              onClick={handleSubmit}
+              disabled={!formData.phoneNumber}
+            >
               Confirm & Submit
             </button>
           </div>

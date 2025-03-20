@@ -1,10 +1,21 @@
 import { signOut } from "firebase/auth";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../firebaseConfig"; // ✅ Correct import path
 import "./Settings.css";
 
 const Settings = () => {
   const navigate = useNavigate();
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    // Listen for auth state changes
+    const unsubscribe = auth.onAuthStateChanged((currentUser) => {
+      setUser(currentUser);
+    });
+
+    return () => unsubscribe(); // Cleanup the listener
+  }, []);
 
   const handleLogout = async () => {
     const confirmLogout = window.confirm("Are you sure you want to log out?");
@@ -30,10 +41,10 @@ const Settings = () => {
 
       {/* User Profile */}
       <div className="profile">
-        <img src="/assets/profile.png" alt="Profile" />
+        <img src={user?.photoURL || "/assets/profile.png"} alt="Profile" />
         <div className="text">
-          <p>Group 16</p>
-          <p>Group16@gmail.com</p>
+          <p>{user?.displayName || "User Name"}</p>
+          <p>{user?.email || "user@example.com"}</p>
         </div>
       </div>
 
