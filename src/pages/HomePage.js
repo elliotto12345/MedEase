@@ -1,12 +1,12 @@
 import React from "react";
+import Footer from "../components/Footer";
+import Home from "../components/Home";
 import LandingPage from "../components/LandingPage";
 import Navbar from "../components/Navbar";
-import Home from "../components/Home";
 import Sidebar from "../components/Sidebar";
-import Footer from "../components/Footer";
 
 const HomePage = () => {
-  const singIn = false;
+  const singIn = true;
   return (
     <>
       {singIn ? (
