@@ -15,7 +15,7 @@ import MessagesPage from "./pages/MessagesPage";
 import PasswordResetPage from "./pages/PasswordResetPage";
 import PaymentsPage from "./pages/PaymentsPage";
 import PharmacyPage from "./pages/PharmacyPage";
-import SettingsPage from "./pages/SetttingsPage";
+import SettingsPage from "./pages/SettingsPage"; // ✅ Fixed typo in import
 import SignupPage from "./pages/SignupPage";
 
 function App() {
@@ -28,7 +28,7 @@ function App() {
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/password-reset" element={<PasswordResetPage />} />
           <Route path="/payments" element={<PaymentsPage />} />
-          <Route path="/settings" element={<SettingsPage />} />
+          <Route path="/settings" element={<SettingsPage />} /> {/* ✅ Fixed SettingsPage */}
           <Route path="/messages" element={<MessagesPage />} />
           <Route path="/messages/chat" element={<ChatSession />} />
           <Route path="/messages/consultation" element={<Consultation />} />

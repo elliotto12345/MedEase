@@ -1,8 +1,10 @@
 import React from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "./Home.css";
-import { Link } from "react-router-dom";
 
 function Home() {
+  const navigate = useNavigate();
+
   const currentDate = new Date()
     .toLocaleDateString("en-GB", {
       day: "2-digit",
@@ -38,7 +40,7 @@ function Home() {
           <p>
             We are committed to prioritising your health. Remember staying
             healthy is a step away from sickness. Book an appointment now to
-            know your medical status
+            know your medical status.
           </p>
           <button className="book-button">Book Appointment</button>
         </div>
@@ -71,7 +73,12 @@ function Home() {
           <p>Talk to a specialist</p>
         </div>
 
-        <div className="feature-card">
+        {/* ✅ Updated Pharmacy Card with onClick Navigation */}
+        <div 
+          className="feature-card" 
+          onClick={() => navigate("/Pharmacy")} 
+          style={{ cursor: "pointer" }}
+        >
           <img
             src={process.env.PUBLIC_URL + "/assets/Pharmacy Shop.png"}
             alt="Pharmacy"

@@ -8,11 +8,12 @@ const Footer = () => {
       <div className={`bottom ${signIn ? "signIn-bg" : "signOut-bg"}`}>
         <div className="column-one">
           <p>
-            Copyright © 2025 MedEase ltd. <br />
+            Copyright © 2025 MedEase Ltd. <br />
             All rights reserved
           </p>
-          <img src="/assets/social-links.png" alt="social links" />
+          <img src="/assets/social-links.png" alt="Social Links" />
         </div>
+
         <div className="column-two">
           <div className="left">
             <p>Company</p>
@@ -31,15 +32,14 @@ const Footer = () => {
             <p>Status</p>
           </div>
         </div>
+
         <div className="column-three">
           <p>Stay up to date</p>
           <div
-            className={`input ${
-              signIn ? "signIn-input-color" : "signOut-input-color"
-            }`}
+            className={`input ${signIn ? "signIn-input-color" : "signOut-input-color"}`}
           >
-            <input type="text" />
-            <img src="/assets/send.png" alt="send" />
+            <input type="text" placeholder="Enter your email" />
+            <img src="/assets/send.png" alt="Send" />
           </div>
         </div>
       </div>
