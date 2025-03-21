@@ -1,6 +1,7 @@
 .footer {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .signIn-bg {
@@ -13,10 +14,11 @@
 
 .footer .bottom {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   padding: 50px;
   gap: 25px;
   color: white;
+  align-items: center;
 }
 
 .bottom .column-one {
@@ -24,26 +26,24 @@
   flex-direction: column;
   gap: 20px;
   align-items: center;
-  padding: 25px;
+  text-align: center;
 }
 
 .bottom .column-two {
   display: flex;
   gap: 20px;
-  padding: 25px;
-  align-items: center;
-  justify-content: space-around;
+  justify-content: center;
 }
 
 .column-two .right,
 .column-two .left {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 10px;
 }
 
-.column-two .right p:nth-child(1),
-.column-two .left p:nth-child(1),
+.column-two .right p:first-child,
+.column-two .left p:first-child,
 .column-three p {
   font-size: 20px;
   font-weight: bold;
@@ -53,7 +53,7 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
-  padding: 25px;
+  align-items: center;
 }
 
 .column-three .input {
@@ -61,7 +61,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 70%;
+  width: 80%;
+  max-width: 300px;
   border-radius: 5px;
 }
 
@@ -76,4 +77,29 @@
 .column-three .input input {
   background-color: transparent;
   border: none;
+  color: white;
+  flex: 1;
+  padding: 5px;
+}
+
+.column-three .input img {
+  width: 20px;
+  cursor: pointer;
+}
+
+/* 🔹 Responsive Styles */
+@media (max-width: 900px) {
+  .footer .bottom {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .bottom .column-two {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .column-three .input {
+    width: 100%;
+  }
 }

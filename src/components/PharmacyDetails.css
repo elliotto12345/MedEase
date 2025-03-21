@@ -4,11 +4,10 @@
     font-family: Arial, sans-serif;
     padding: 20px;
     background-color: white;
-    width: 90%; /* Adjust width dynamically */
-    max-width: 1200px; /* Increased width */
-    margin: 0 auto; /* Center the container */
+    width: 100%; 
+    max-width: 1800px; 
+    margin: 0 auto; 
 }
-
 
 /* Header Section */
 .header {
@@ -154,12 +153,16 @@
 }
 
 .done-button:hover {
-    background-color: #630066;
+    background-color: purple;
 }
 
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    .header h1 {
+        font-size: 25px;
+    }
+    
     .categories {
         flex-direction: column;
     }

@@ -1,111 +1,299 @@
 /* Global Styling */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-  }
-  
-  /* Container Layout */
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+}
+
+/* Container Layout */
+.medicine-container {
+  display: flex;
+  height: 100vh;
+}
+
+/* Sidebar Styling */
+.medicine-sidebar {
+  width: 25%;
+  background-color: white;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px 0 0 10px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.medicine-sidebar.open {
+  transform: translateX(0);
+}
+
+/* Back Icon Styling */
+.back-icon {
+  width: 20px;
+  height: 20px;
+  background-color: rgba(107, 33, 168, 0.1); /* Light purple background */
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+  transition: background 0.3s ease-in-out;
+}
+
+.back-icon:hover {
+  background-color: rgba(107, 33, 168, 0.2);
+}
+
+/* Category Header */
+.category-header {
+  display: flex;
+  align-items: center;
+  font-size: 1.25rem;
+  margin-bottom: 16px;
+  background: purple;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+  width: 100%;
+  text-align: left;
+}
+
+/* Category List */
+.category-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.category-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  background: white;
+  border-radius: 5px;
+  cursor: pointer;
+  border: 1px solid #ddd;
+  transition: background 0.3s ease-in-out;
+}
+
+.category-item:hover {
+  background: rgba(107, 33, 168, 0.1);
+}
+
+/* Checkbox Styling */
+.medicine-sidebar input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #22c55e;
+  cursor: pointer;
+}
+
+/* Main Content */
+.medicine-content {
+  width: 75%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Top Bar Container */
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+/* Search Bar Container */
+.search-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 950px;
+  position: relative;
+}
+
+/* Search Bar */
+.search-bar {
+  flex: 1;
+  padding: 12px 40px;
+  border: 2px solid purple;
+  border-radius: 25px;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.3s ease-in-out;
+  width: 100%;
+}
+
+.search-bar:focus {
+  border-color: #9333ea;
+  box-shadow: 0 0 5px rgba(107, 33, 168, 0.5);
+}
+
+/* Search Icon */
+.search-icon {
+  position: absolute;
+  left: 15px;
+  font-size: 18px;
+  color: purple;
+  cursor: pointer;
+}
+
+/* Cart Icon (Outside Search Bar) */
+.cart-icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: rgba(107, 33, 168, 0.1);
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+
+.cart-icon-container:hover {
+  background: rgba(107, 33, 168, 0.2);
+}
+
+.cart-icon {
+  font-size: 20px;
+  color: purple;
+}
+
+/* Medicine Grid */
+.medicine-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+/* Medicine Card */
+.medicine-item {
+  border: 1px solid #ccc;
+  padding: 16px;
+  text-align: center;
+  border-radius: 8px;
+  background: white;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+}
+
+.medicine-item:hover {
+  transform: scale(1.05);
+}
+
+.medicine-item img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.medicine-item p {
+  margin-top: 8px;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.medicine-price {
+  color: green;
+}
+
+/* Add to Cart Button */
+.buy-button {
+  background-color: #22c55e;
+  color: white;
+  padding: 10px 16px;
+  margin-top: 8px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.3s ease-in-out;
+}
+
+.buy-button:hover {
+  background-color: #15803d;
+}
+
+/* Cart Summary */
+.cart-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Proceed to Payment Button */
+.proceed-payment {
+  background-color: purple;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.3s ease-in-out;
+}
+
+.proceed-payment:hover {
+  background-color: #6b21a8;
+}
+
+/* Hamburger Button */
+.hamburger {
+  display: none;
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  background: purple;
+  color: white;
+  border: none;
+  padding: 10px 12px;
+  font-size: 22px;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
   .medicine-container {
-    display: flex;
-    height: 100vh;
-  }
-  
-  /* Sidebar Styling */
-  .medicine-sidebar {
-    width: 25%;
-    background-color: #6b21a8; /* Purple */
-    color: white;
-    padding: 16px;
-    display: flex;
     flex-direction: column;
   }
-  
-  .medicine-sidebar button {
-    display: flex;
-    align-items: center;
-    font-size: 1.25rem;
-    margin-bottom: 16px;
-    background: none;
-    border: none;
-    color: white;
-    cursor: pointer;
+
+  .medicine-sidebar {
+    width: 80%;
+    position: fixed;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 999;
   }
-  
-  .medicine-sidebar .category-list {
-    margin-top: 10px;
+
+  .medicine-sidebar.open {
+    transform: translateX(0);
   }
-  
-  .medicine-sidebar .category-list div {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  
-  .medicine-sidebar input[type="checkbox"] {
-    width: 18px;
-    height: 18px;
-    cursor: pointer;
-  }
-  
-  /* Main Content */
-  .medicine-content {
-    width: 75%;
-    padding: 20px;
-  }
-  
-  .medicine-search {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-bottom: 16px;
-    font-size: 16px;
-  }
-  
-  /* Medicine Grid */
-  .medicine-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 16px;
-  }
-  
-  .medicine-item {
-    border: 1px solid #ccc;
-    padding: 16px;
-    text-align: center;
-    border-radius: 8px;
-    background: #fff;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .medicine-item img {
-    width: 128px;
-    height: 128px;
-    margin: auto;
+
+  .hamburger {
     display: block;
-    object-fit: cover;
   }
-  
-  .medicine-item p {
-    margin-top: 8px;
-    font-weight: bold;
-    font-size: 16px;
+
+  .medicine-content {
+    width: 100%;
   }
-  
-  .medicine-item button {
-    background-color: #22c55e; /* Green */
-    color: white;
-    padding: 10px 16px;
-    margin-top: 8px;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-    font-size: 14px;
-    transition: background 0.3s ease-in-out;
-  }
-  
-  .medicine-item button:hover {
-    background-color: #15803d; /* Darker green */
-  }
-  
+}
