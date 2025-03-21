@@ -1,13 +1,12 @@
-/* Payment.css */
-
-.receipt-container {
-    width: 60%;
-    margin: auto;
-    border: 1px solid black;
-    font-family: Arial, sans-serif;
-    background: white;
+  .receipt-container {
+      width: 80%;
+      margin: auto;
+      border: 1px solid white;
+      font-family: Arial, sans-serif;
+      background: white;
+      height: 600px;
   }
-  
+
   .receipt-header {
     background: purple;
     color: white;
@@ -85,6 +84,8 @@
     padding: 10px 20px;
     cursor: pointer;
     font-weight: bold;
+    border-radius: 30px;
+    margin-top: 12%;
   }
   
   .confirm-pay {
@@ -94,5 +95,7 @@
     padding: 10px 20px;
     cursor: pointer;
     font-weight: bold;
+    border-radius: 30px;
+    margin-top: 85%;
   }
   

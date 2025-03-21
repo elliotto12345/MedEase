@@ -6,12 +6,15 @@ import AppointmentList from "./components/AppointmentList";
 import AppointmentPreview from "./components/AppointmentPreview";
 import ChatSession from "./components/ChatSession";
 import Consultation from "./components/Consultation";
+import Medicines from "./components/Medicines"; // ✅ Import Medicines Page
+import PharmacyDetails from "./components/PharmacyDetails";
 import AppointmentsPage from "./pages/AppointmentsPage";
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import MessagesPage from "./pages/MessagesPage";
 import PasswordResetPage from "./pages/PasswordResetPage";
 import PaymentsPage from "./pages/PaymentsPage";
+import PharmacyPage from "./pages/PharmacyPage";
 import SettingsPage from "./pages/SetttingsPage";
 import SignupPage from "./pages/SignupPage";
 
@@ -30,15 +33,12 @@ function App() {
           <Route path="/messages/chat" element={<ChatSession />} />
           <Route path="/messages/consultation" element={<Consultation />} />
           <Route path="/appointments" element={<AppointmentsPage />} />
-          <Route
-            path="/appointments/booking"
-            element={<AppointmentBooking />}
-          />
-          <Route
-            path="/appointments/preview"
-            element={<AppointmentPreview />}
-          />
+          <Route path="/appointments/booking" element={<AppointmentBooking />} />
+          <Route path="/appointments/preview" element={<AppointmentPreview />} />
           <Route path="/sessions" element={<AppointmentList />} />
+          <Route path="/pharmacy" element={<PharmacyPage />} />
+          <Route path="/pharmacy-details/:pharmacyName" element={<PharmacyDetails />} />
+          <Route path="/medicines" element={<Medicines />} /> {/* ✅ Added Medicines route */}
         </Routes>
       </div>
     </Router>
