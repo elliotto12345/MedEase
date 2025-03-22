@@ -27,8 +27,8 @@ const PharmacyPage = () => {
     <div className="pharmacy-container">
       {/* Header */}
       <div className="pharmacy-header">
-        <button className="back-button">⬅</button>
-        <h1>Pharmacy</h1>
+      <button className="back-button" onClick={() => navigate(-1)}>⬅</button>
+      <h1>Pharmacy</h1>
       </div>
 
       {/* Subtitle */}

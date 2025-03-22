@@ -2,7 +2,7 @@
 
 .pharmacy-details-container {
     font-family: Arial, sans-serif;
-    padding: 20px;
+    padding: 0 10px;
     background-color: white;
     width: 100%; 
     max-width: 1800px; 
@@ -16,8 +16,7 @@
     background-color: purple;
     color: white;
     padding: 15px;
-    font-size: 18px;
-    border-radius: 10px;
+    font-size: 15px;
 }
 
 .back-button {
@@ -144,7 +143,8 @@
     font-size: 16px;
     cursor: pointer;
     border-radius: 5px;
-    margin-top: 20px;
+    margin-top: 100px;
+    margin-bottom: 20px;
     width: auto; /* Adjust width */
     min-width: 150px;
     transition: background 0.3s ease-in-out;

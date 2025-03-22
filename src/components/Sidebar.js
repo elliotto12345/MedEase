@@ -48,16 +48,6 @@ const Sidebar = () => {
             </p>
           </Link>
           <Link
-            to="/pharmacy"
-            className={`m-pharmacy menu ${routeName === "/pharmacy" ? "active-bg" : ""}`}
-            onClick={() => setIsOpen(false)}
-          >
-            <img src="/assets/pharmacy.png" alt="pharmacy" width={50} height={50} />
-            <p className={routeName === "/pharmacy" ? "active-text" : ""}>
-              Pharmacy
-            </p>
-          </Link>
-          <Link
             to="/payments"
             className={`m-payments menu ${routeName === "/payments" ? "active-bg" : ""}`}
             onClick={() => setIsOpen(false)}
