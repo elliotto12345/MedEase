@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Consultation.css";
 
 const Consultation = () => {
@@ -44,17 +44,16 @@ const Consultation = () => {
 
   return (
     <div className="consultation-page">
-      <header className="consultation-header">
-        <div className="back-button" onClick={() => navigate("/messages")}>
-          <div className="circle-back">
-            <i className="fas fa-arrow-left"></i>
-          </div>
-          <div className="header-text">
-            <h1>Start Consultation</h1>
-            <p>Select a doctor to start your consultation</p>
-          </div>
-        </div>
-      </header>
+      <div className="consultation-header">
+        <Link to="/messages">
+          <img src="/assets/go-back.png" alt="go-back" />
+        </Link>
+
+        <p>
+          Start Consultation <br />
+          Start a conversation with a doctor
+        </p>
+      </div>
 
       <div className="doctors-grid">
         {doctors.map((doctor) => (

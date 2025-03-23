@@ -3,40 +3,18 @@
   padding: 20px;
   height: 100vh;
   background-color: #fff;
-  overflow-y: auto;
 }
 
 .consultation-header {
-  margin-bottom: 30px;
-}
-
-.back-button {
-  display: flex;
-  align-items: flex-start;
-  gap: 15px;
-  cursor: pointer;
-}
-
-.circle-back {
-  width: 40px;
-  height: 40px;
-  background-color: #f0f0f0;
-  border-radius: 50%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: 10px;
 }
 
-.header-text h1 {
-  font-size: 24px;
-  font-weight: 500;
-  color: #333;
-  margin-bottom: 5px;
-}
 
-.header-text p {
-  color: #666;
-  font-size: 16px;
+.consultation-header p {
+  font-size: 20px;
+  line-height: 30px;
 }
 
 .doctors-grid {
