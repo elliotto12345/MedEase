@@ -1,55 +1,55 @@
-import "./Payments.css";
 import { Link } from "react-router-dom";
+import "./Receipts.css";
 
-const Payments = () => {
+const Receipts = () => {
   return (
-    <div className="payments">
-      <div className="navigation">
+    <div className="receipts">
+      <div className="nav">
         <Link to="/">
           <img src="/assets/go-back.png" alt="go-back" />
         </Link>
-        <p>Payments</p>
+        <p style={{ color: "white" }}>All Receipts</p>
       </div>
-      <div className="receipts">
+      <div className="transactions">
         <p
           style={{
             marginLeft: "80px",
             fontWeight: "bold",
-            paddingBottom: "15px",
+            padding: "25px 0px",
           }}
         >
-          All your payments
+          official receipts from pharmacies
         </p>
-        <div className="receipt">
+        <div className="transaction">
           <p>
             Date: 7th February
             <br />
             Drug Order from Trust Pharmacy
           </p>
 
-          <button>Details</button>
+          <button>View</button>
         </div>
-        <div className="receipt">
+        <div className="transaction">
           <p>
             Date: 7th February
             <br />
             Drug Order from Trust Pharmacy
           </p>
 
-          <button>Details</button>
+          <button>View</button>
         </div>
-        <div className="receipt">
+        <div className="transaction">
           <p>
             Date: 7th February
             <br />
             Drug Order from Trust Pharmacy
           </p>
 
-          <button>Details</button>
+          <button>View</button>
         </div>
       </div>
     </div>
   );
 };
 
-export default Payments;
+export default Receipts;

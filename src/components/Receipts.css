@@ -1,48 +1,58 @@
-.payments {
+.receipts {
   display: flex;
   flex: 1;
   flex-direction: column;
   padding: 15px 0px;
 }
 
-.payments .navigation {
+.receipts .nav {
   display: flex;
   align-items: center;
   gap: 25px;
   padding: 8px;
+  background-color: purple;
 }
 
-.payments .navigation img {
+.receipts .nav img {
   width: 50px;
   height: 50px;
   object-fit: contain;
 }
 
-.payments .navigation p {
+.receipts .nav p {
   font-size: 24px;
 }
 
-.payments .receipts {
+.receipts .transactions {
   display: flex;
   flex-direction: column;
 }
 
-.payments .receipts .receipt {
+.receipts .transactions .transaction {
   display: flex;
   width: 100%;
   justify-content: space-between;
   align-items: center;
-  background-color: rgb(188, 188, 188);
+  /* background-color: rgb(188, 188, 188); */
   padding: 30px 60px 30px 20px;
 }
 
-.receipts .receipt p {
+.receipts .transactions .transaction:hover {
+  background-color: rgb(188, 188, 188);
+  cursor: pointer;
+}
+
+.receipts .transaction p {
   font-size: 20px;
   line-height: 40px;
 }
 
-.receipts .receipt button {
+.receipts .transaction button {
   padding: 10px;
-  background-color: white;
+  width: 100px;
+  font-size: 20px;
+  background-color: green;
+  color: white;
+  border-radius: 8px;
   border: none;
 }

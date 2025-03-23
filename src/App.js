@@ -19,6 +19,7 @@ import SettingsPage from "./pages/SettingsPage"; // ✅ Fixed typo in import
 import SignupPage from "./pages/SignupPage";
 import DocAppointments from "./components/DocAppointments";
 import PaymentProcess from "./components/PaymentProcess";
+import Receipts from "./components/Receipts";
 
 function App() {
   const doctor = false;
@@ -31,6 +32,7 @@ function App() {
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/password-reset" element={<PasswordResetPage />} />
           <Route path="/payments" element={<PaymentsPage />} />
+          <Route path="/receipts" element={<Receipts />} />
           <Route path="/paymentprocess" element={<PaymentProcess />} />
           <Route path="/settings" element={<SettingsPage />} />{" "}
           {/* ✅ Fixed SettingsPage */}

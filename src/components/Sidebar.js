@@ -11,9 +11,9 @@ const Sidebar = () => {
   return (
     <>
       {/* Hamburger Icon */}
-      <button className="hamburger" onClick={() => setIsOpen(!isOpen)}>
+      {/* <button className="hamburger" onClick={() => setIsOpen(!isOpen)}>
         ☰
-      </button>
+      </button> */}
 
       <div className={`sidebar ${isOpen ? "open" : ""}`}>
         <div className="logo">

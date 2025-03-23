@@ -122,7 +122,7 @@ function Home() {
           <p>Order drugs and make payments online</p>
         </div>
 
-        <div className="feature-card">
+        <div className="feature-card" onClick={() => navigate("/receipts")}>
           <img
             src={process.env.PUBLIC_URL + "/assets/Cashbook.png"}
             alt="Receipts"
