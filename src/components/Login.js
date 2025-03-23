@@ -1,4 +1,4 @@
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword, signOut } from "firebase/auth";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../firebaseConfig"; // Firebase import
@@ -14,12 +14,21 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     setError("");
+
     try {
-      await signInWithEmailAndPassword(auth, email, password);
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+
+      if (!user.emailVerified) {
+        setError("Please verify your email before logging in.");
+        await signOut(auth); // Prevent unverified users from staying logged in
+        return;
+      }
+
       alert("Login successful!");
       navigate("/appointments");
     } catch (error) {
-      setError(error.message);
+      setError(error.message.replace("Firebase:", "").trim());
     }
   };
 
