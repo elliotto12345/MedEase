@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, sendEmailVerification } from "firebase/auth";
 import { doc, serverTimestamp, setDoc } from "firebase/firestore";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -14,7 +14,10 @@ const Signup = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
   const [agree, setAgree] = useState(false);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+
+  const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
   const handleSignup = async (e) => {
     e.preventDefault();
@@ -25,13 +28,20 @@ const Signup = () => {
       return;
     }
 
+    if (!passwordRegex.test(password)) {
+      setError(
+        "Password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, one number, and one special character."
+      );
+      return;
+    }
+
+    setLoading(true);
     try {
-      // Create user in Firebase Authentication
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
 
-      // Save additional user info in Firestore
       await setDoc(doc(db, "users", user.uid), {
+        uid: user.uid,
         firstName,
         lastName,
         email,
@@ -39,14 +49,16 @@ const Signup = () => {
         createdAt: serverTimestamp(),
       });
 
-      window.alert("Signup successful! Redirecting to login...");
+      await sendEmailVerification(user);
+      window.alert("Signup successful! A verification email has been sent. Please verify your email before logging in.");
 
-      // Redirect after 2 seconds
       setTimeout(() => {
         navigate("/login");
       }, 2000);
     } catch (error) {
       setError(error.message.replace("Firebase:", "").trim());
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -63,7 +75,6 @@ const Signup = () => {
             <select value={role} onChange={(e) => setRole(e.target.value)}>
               <option value="patient">Patient</option>
               <option value="doctor">Doctor</option>
-              <option value="admin">Admin</option>
             </select>
           </div>
           <div>
@@ -96,7 +107,7 @@ const Signup = () => {
           <div>
             <input
               type={showPassword ? "text" : "password"}
-              placeholder="Password"
+              placeholder="Password (min 8 chars, uppercase, lowercase, number, special char)"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
@@ -118,7 +129,9 @@ const Signup = () => {
             />
             <p>Yes, I agree to the terms and policy of MedEase</p>
           </div>
-          <button type="submit">Sign Up</button>
+          <button type="submit" disabled={loading}>
+            {loading ? "Signing Up..." : "Sign Up"}
+          </button>
         </form>
       </div>
       <div className="image">
