@@ -50,7 +50,7 @@
 }
 
 /* Hamburger Menu Styles */
-.hamburger {
+/* .hamburger {
   display: none;
   font-size: 30px;
   background: none;
@@ -61,7 +61,7 @@
   top: 20px;
   left: 20px;
   z-index: 1000;
-}
+} */
 
 /* Mobile View */
 @media screen and (max-width: 768px) {
