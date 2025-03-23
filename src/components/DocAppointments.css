@@ -1,0 +1,125 @@
+.doc-appointments {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.doc-appointments .top-bar {
+  display: flex;
+  justify-content: start;
+  gap: 30px;
+  padding: 8px;
+  background-color: #660066;
+  color: white;
+}
+
+.doc-appointments .top-bar img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.doc-appointments .top-bar p {
+  font-size: 24px;
+}
+
+.doc-appointments .filter-menus {
+  width: 100%;
+  justify-content: space-between;
+  display: flex;
+  padding: 8px 8px 15px 8px;
+  border-bottom: 2px solid black;
+}
+
+.doc-appointments .filter-menus .menus {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex: 2;
+}
+
+.filter-menus .menus .menu {
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 8px;
+}
+
+.menus .upcoming {
+  background-color: blue;
+  color: white;
+}
+.menus .pending,
+.menus .completed {
+  background-color: rgb(214, 212, 212);
+}
+
+.filter-menus .menus .menu span {
+  border-radius: 50%;
+  padding: 8px 12px;
+  background-color: white;
+  color: black;
+}
+
+.filter-menus .date-display {
+  flex: 1;
+}
+
+.doc-appointments .persons .person {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px;
+}
+
+.doc-appointments .persons .person p {
+  line-height: 30px;
+}
+
+.doc-appointments .persons .person button {
+  border-radius: 8px;
+  padding: 10px;
+  border: none;
+  font-size: 20px;
+}
+
+.doc-appointments .persons .person .pending {
+  background-color: yellow;
+}
+
+.doc-appointments .persons .person .completed {
+  background-color: green;
+  color: white;
+}
+
+.doc-appointments .persons .person .profile {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.persons .person .profile img {
+  object-fit: contain;
+  width: 75px;
+  height: auto;
+}
+
+/* .date-display {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .calendar-icon {
+    width: 32px;
+    height: 32px;
+    filter: brightness(0);
+    object-fit: contain;
+  }
+  
+  .date-display span {
+    font-size: 16px;
+    color: #000;
+  }
+   */

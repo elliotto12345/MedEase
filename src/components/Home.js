@@ -44,7 +44,7 @@ function Home() {
           </p>
           <button className="book-button">Book Appointment</button>
         </div>
-        <div className="hero-image">
+        <div className="hero-image1">
           <img
             src={process.env.PUBLIC_URL + "/assets/stet1.png"}
             alt="Stethoscope"
@@ -74,9 +74,9 @@ function Home() {
         </div>
 
         {/* ✅ Updated Pharmacy Card with onClick Navigation */}
-        <div 
-          className="feature-card" 
-          onClick={() => navigate("/Pharmacy")} 
+        <div
+          className="feature-card"
+          onClick={() => navigate("/Pharmacy")}
           style={{ cursor: "pointer" }}
         >
           <img
