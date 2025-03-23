@@ -1,47 +1,55 @@
 import React, { useEffect, useState } from "react";
-import { FaArrowLeft, FaBars, FaSearch, FaShoppingCart, FaTimes } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
+import { FaChevronLeft, FaSearch, FaShoppingCart } from "react-icons/fa";
+import { useLocation, useNavigate } from "react-router-dom";
 import "./Medicines.css";
 
 const MedicinePage = () => {
   const navigate = useNavigate();
-  const [selectedCategories, setSelectedCategories] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [medicines, setMedicines] = useState([]);
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const categoryFromParams = queryParams.get("search") || "";
+  
+  const [searchTerm, setSearchTerm] = useState(categoryFromParams);
+  const [medicines, setMedicines] = useState([
+    { id: 1, name: "Benadryl Allergy", image: "/assets/m1.jpg", price: 50, category: "Allergy" },
+    { id: 2, name: "Aciclovir Cream", image: "/assets/m2.jpg", price: 30, category: "Skin Care" },
+    { id: 3, name: "Fenistil Capsules", image: "/assets/m3.jpg", price: 40, category: "Allergy" },
+    { id: 4, name: "Panadol Extra", image: "/assets/m4.jpg", price: 50, category: "Pain Relief" },
+  ]);
   const [cart, setCart] = useState([]);
-  const [sidebarOpen, setSidebarOpen] = useState(false); // For toggling sidebar
 
   useEffect(() => {
     const fetchMedicines = async () => {
+      if (!searchTerm) return;
       try {
-        const response = await fetch(`https://api.example.com/medicines?search=${searchTerm}`);
+        const response = await fetch(
+          `https://api.fda.gov/drug/label.json?search=openfda.brand_name:${searchTerm}&limit=10`
+        );
         const data = await response.json();
-        setMedicines(data.map((med) => ({ ...med, price: Number(med.price) })));
+        
+        const medicinesData = data.results.map((item, index) => ({
+          id: index + 5,
+          name: item.openfda.brand_name ? item.openfda.brand_name[0] : "Unknown",
+          image: item.openfda.image_url && item.openfda.image_url.length > 0
+            ? item.openfda.image_url[0]
+            : "/assets/default_medicine_image.jpg", // Default image if unavailable
+          price: Math.floor(Math.random() * 100) + 1,
+          category: searchTerm,
+        }));
+        
+        setMedicines((prevMedicines) => [...prevMedicines, ...medicinesData]);
       } catch (error) {
         console.error("Error fetching medicines:", error);
       }
     };
 
-    if (searchTerm) {
-      fetchMedicines();
-    } else {
-      setMedicines([
-        { id: 1, name: "Benadryl Allergy", image: "/assets/m1.jpg", price: 50, category: "Allergy" },
-        { id: 2, name: "Aciclovir Cream", image: "/assets/m2.jpg", price: 30, category: "Skin Care" },
-        { id: 3, name: "Fenistil Capsules", image: "/assets/m3.jpg", price: 40, category: "Allergy" },
-        { id: 4, name: "Panadol Extra", image: "/assets/m4.jpg", price: 50, category: "Pain Relief" },
-      ]);
-    }
+    fetchMedicines();
   }, [searchTerm]);
 
-  const toggleCategory = (category) => {
-    setSelectedCategories((prev) =>
-      prev.includes(category) ? prev.filter((c) => c !== category) : [...prev, category]
-    );
-  };
-
-  const addToCart = (medicine) => {
-    if (!cart.some((item) => item.id === medicine.id)) {
+  const toggleCartItem = (medicine) => {
+    if (cart.some((item) => item.id === medicine.id)) {
+      setCart(cart.filter((item) => item.id !== medicine.id));
+    } else {
       setCart([...cart, medicine]);
     }
   };
@@ -52,39 +60,16 @@ const MedicinePage = () => {
       return;
     }
     localStorage.setItem("selectedMedicines", JSON.stringify(cart));
-    navigate("/payment");
+    navigate("/payments");
   };
 
   return (
     <div className="medicine-container">
-      {/* Hamburger Button for Mobile */}
-      <button className="hamburger" onClick={() => setSidebarOpen(!sidebarOpen)}>
-        {sidebarOpen ? <FaTimes /> : <FaBars />}
+      <button className="back-button" onClick={() => navigate(-1)}>
+        <FaChevronLeft className="back-icon" />
       </button>
 
-      {/* Sidebar */}
-      <div className={`medicine-sidebar ${sidebarOpen ? "open" : ""}`}>
-        <button className="category-header" onClick={() => setSidebarOpen(false)}>
-          <FaArrowLeft className="back-icon" />
-          Categories
-        </button>
-        <div className="category-list">
-          {["Hair Care", "Skin Care", "Pain Relief", "Allergy"].map((category) => (
-            <div key={category} className="category-item">
-              <input
-                type="checkbox"
-                checked={selectedCategories.includes(category)}
-                onChange={() => toggleCategory(category)}
-              />
-              <span>{category}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Main Content */}
       <div className="medicine-content">
-        {/* Top Bar */}
         <div className="top-bar">
           <div className="search-container">
             <FaSearch className="search-icon" />
@@ -102,25 +87,23 @@ const MedicinePage = () => {
           </div>
         </div>
 
-        {/* Medicines Grid */}
         <div className="medicine-grid">
-          {medicines
-            .filter((medicine) =>
-              selectedCategories.length === 0 || selectedCategories.includes(medicine.category)
-            )
-            .map((medicine) => (
+          {medicines.length > 0 ? (
+            medicines.map((medicine) => (
               <div key={medicine.id} className="medicine-item">
                 <img src={medicine.image} alt={medicine.name} />
                 <p>{medicine.name}</p>
                 <p className="medicine-price">GHS {medicine.price}</p>
-                <button className="buy-button" onClick={() => addToCart(medicine)}>
-                  {cart.some((item) => item.id === medicine.id) ? "Added" : "Add to Cart"}
+                <button className="buy-button" onClick={() => toggleCartItem(medicine)}>
+                  {cart.some((item) => item.id === medicine.id) ? "Remove from Cart" : "Add to Cart"}
                 </button>
               </div>
-            ))}
+            ))
+          ) : (
+            <p>No medicines found. Please try a different search term.</p>
+          )}
         </div>
 
-        {/* Proceed to Payment Button */}
         {cart.length > 0 && (
           <div className="cart-summary">
             <strong>Total Items: {cart.length}</strong>

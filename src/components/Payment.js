@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import "./Payment.css";
 
 const Payment = () => {
-  const publicKey = "pk_test_533ccc4b2e836680f5b521c59c8ed65a68a3028b";
+  const publicKey = "pk_live_71d65eb541776517545a57459c6bd666bd630181";
   const navigate = useNavigate();
 
   const [customer, setCustomer] = useState({

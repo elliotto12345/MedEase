@@ -10,40 +10,35 @@ body {
 .medicine-container {
   display: flex;
   height: 100vh;
+  width: 100%; /* Increase width */
+  margin: auto; /* Center align */
+  margin-left: 10%;
 }
 
-/* Sidebar Styling */
-.medicine-sidebar {
-  width: 25%;
-  background-color: white;
-  padding: 16px;
-  display: flex;
-  flex-direction: column;
-  border-radius: 10px 0 0 10px;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease-in-out;
+.back-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
 }
 
-.medicine-sidebar.open {
-  transform: translateX(0);
-}
-
-/* Back Icon Styling */
 .back-icon {
-  width: 20px;
-  height: 20px;
-  background-color: rgba(107, 33, 168, 0.1); /* Light purple background */
   color: white;
+  background-color: purple;
+  padding: 7px;
   border-radius: 50%;
+  margin-top: 40px; margin-left: -70px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 10px;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
   transition: background 0.3s ease-in-out;
 }
 
 .back-icon:hover {
-  background-color: rgba(107, 33, 168, 0.2);
+  background-color: #6b21a8;
 }
 
 /* Category Header */
@@ -56,7 +51,6 @@ body {
   color: white;
   border: none;
   padding: 12px;
-  border-radius: 5px;
   cursor: pointer;
   transition: background 0.3s ease-in-out;
   width: 100%;
@@ -104,7 +98,7 @@ body {
 }
 
 /* Top Bar Container */
-.top-bar {
+top-bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -252,45 +246,23 @@ body {
   background-color: #6b21a8;
 }
 
-/* Hamburger Button */
-.hamburger {
-  display: none;
-  position: fixed;
-  top: 15px;
-  left: 15px;
-  background: purple;
-  color: white;
-  border: none;
-  padding: 10px 12px;
-  font-size: 22px;
-  border-radius: 5px;
-  cursor: pointer;
-  z-index: 1000;
-}
-
 /* Mobile Responsive */
 @media (max-width: 768px) {
   .medicine-container {
     flex-direction: column;
   }
 
-  .medicine-sidebar {
-    width: 80%;
-    position: fixed;
-    height: 100%;
-    top: 0;
-    left: 0;
-    transform: translateX(-100%);
-    transition: transform 0.3s ease-in-out;
-    z-index: 999;
+  .back-icon {
+    width: 30px;
+    height: 30px;
+    padding: 5px;
+    margin-top: 120px;
   }
 
-  .medicine-sidebar.open {
-    transform: translateX(0);
-  }
-
-  .hamburger {
-    display: block;
+  .search-container {
+    max-width: 80%;
+    padding: 8px; padding-top: 0;
+    margin-left: 15px;
   }
 
   .medicine-content {

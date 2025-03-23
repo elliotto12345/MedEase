@@ -1,5 +1,5 @@
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { doc, setDoc } from "firebase/firestore";
+import { doc, serverTimestamp, setDoc } from "firebase/firestore";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { auth, db } from "../firebaseConfig";
@@ -36,6 +36,7 @@ const Signup = () => {
         lastName,
         email,
         role,
+        createdAt: serverTimestamp(),
       });
 
       window.alert("Signup successful! Redirecting to login...");

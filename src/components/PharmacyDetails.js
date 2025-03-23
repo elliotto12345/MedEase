@@ -16,17 +16,19 @@ const PharmacyDetails = () => {
     setPrescription(event.target.files[0]);
   };
 
+  const handleNavigate = () => {
+    navigate(`/medicines?search=${selectedCategory}`);
+  };
+
   return (
     <div className="pharmacy-details-container">
-      {/* Header */}
       <div className="header">
-        <button className="back-button" onClick={() => navigate(-1)}>←</button>
+        <button className="back-button" onClick={() => navigate(-1)}>⬅</button>
         <h1>Welcome to {pharmacyName || "Pharmacy"}</h1>
       </div>
       
       <p className="subtitle">Order for drugs, pay online and it will be delivered</p>
       
-      {/* Categories */}
       <h2>Select drug based on categories</h2>
       <div className="categories">
         {categories.map((category) => (
@@ -44,7 +46,6 @@ const PharmacyDetails = () => {
         <hr />
       </div>
 
-      {/* Prescription Upload */}
       <div className="prescription-section">
         <label>Insert a prescription:</label>
         <div className="upload-box">
@@ -62,8 +63,7 @@ const PharmacyDetails = () => {
         </div>
       </div>
       
-      {/* Redirect to Medicines Page */}
-      <button className="done-button" onClick={() => navigate("/medicines")}>
+      <button className="done-button" onClick={handleNavigate}>
         Done
       </button>
     </div>
