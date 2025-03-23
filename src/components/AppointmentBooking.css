@@ -204,6 +204,37 @@
   cursor: not-allowed;
 }
 
+input, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+}
+
+.phone-number-input {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+}
+
+.phone-number-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.phone-number-container label {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+}
+
+
 @media (max-width: 768px) {
   .appointment-booking {
     margin-left: 0;

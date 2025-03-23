@@ -1,12 +1,14 @@
 import React from "react";
+import Footer from "../components/Footer";
+import Home from "../components/Home";
+import DocHome from "../components/DocHome";
 import LandingPage from "../components/LandingPage";
 import Navbar from "../components/Navbar";
-import Home from "../components/Home";
 import Sidebar from "../components/Sidebar";
-import Footer from "../components/Footer";
 
 const HomePage = () => {
-  const singIn = false;
+  const singIn = true;
+  const doctor = false;
   return (
     <>
       {singIn ? (
@@ -14,7 +16,7 @@ const HomePage = () => {
         <div style={{ display: "flex", flexDirection: "column" }}>
           <div style={{ display: "flex", alignItems: "stretch" }}>
             <Sidebar />
-            <Home />
+            {doctor ? <DocHome /> : <Home />}
           </div>
           <Footer />
         </div>

@@ -60,7 +60,7 @@ const AppointmentPreview = () => {
         </p>
 
         <button className="print-btn" onClick={() => window.print()}>
-          Print receipt
+          Print Appointment
         </button>
       </div>
     </div>

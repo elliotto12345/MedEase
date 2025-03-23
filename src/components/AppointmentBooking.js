@@ -136,7 +136,12 @@ const AppointmentBooking = () => {
           <div className="step-number">4</div>
           <span>Reason</span>
         </div>
+        <div className={`progress-step ${step >= 5 ? "active" : ""}`}>
+          <div className="step-number">5</div>
+          <span>Phone Number</span>
+        </div>
       </div>
+
 
       <div className="booking-form">
         {step === 1 && (
@@ -264,10 +269,33 @@ const AppointmentBooking = () => {
               placeholder="Please describe your symptoms or reason for the appointment..."
               required
             />
+             <button
+              className="next-btn"
+              onClick={handleNext}
+              disabled={!formData.reason}
+            >
+              Next
+            </button>
+          </div>
+        )}
+
+        {step === 5 && (
+          <div className="form-step phone-number-container">
+            <label htmlFor="phoneNumber">Enter Your Phone Number</label>
+            <input
+              type="tel"
+              id="phoneNumber"
+              name="phoneNumber"
+              value={formData.phoneNumber}
+              onChange={handleInputChange}
+              placeholder="e.g. +233 541234567"
+              className="phone-number-input"
+              required
+            />
             <button
               className="submit-btn"
               onClick={handleSubmit}
-              disabled={!formData.reason}
+              disabled={!formData.phoneNumber}
             >
               Confirm & Submit
             </button>
