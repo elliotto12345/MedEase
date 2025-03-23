@@ -17,8 +17,11 @@ import PaymentsPage from "./pages/PaymentsPage";
 import PharmacyPage from "./pages/PharmacyPage";
 import SettingsPage from "./pages/SettingsPage"; // ✅ Fixed typo in import
 import SignupPage from "./pages/SignupPage";
+import DocAppointments from "./components/DocAppointments";
+import PaymentProcess from "./components/PaymentProcess";
 
 function App() {
+  const doctor = false;
   return (
     <Router>
       <div className="app">
@@ -28,17 +31,32 @@ function App() {
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/password-reset" element={<PasswordResetPage />} />
           <Route path="/payments" element={<PaymentsPage />} />
-          <Route path="/settings" element={<SettingsPage />} /> {/* ✅ Fixed SettingsPage */}
+          <Route path="/paymentprocess" element={<PaymentProcess />} />
+          <Route path="/settings" element={<SettingsPage />} />{" "}
+          {/* ✅ Fixed SettingsPage */}
           <Route path="/messages" element={<MessagesPage />} />
           <Route path="/messages/chat" element={<ChatSession />} />
           <Route path="/messages/consultation" element={<Consultation />} />
-          <Route path="/appointments" element={<AppointmentsPage />} />
-          <Route path="/appointments/booking" element={<AppointmentBooking />} />
-          <Route path="/appointments/preview" element={<AppointmentPreview />} />
+          <Route
+            path="/appointments"
+            element={doctor ? <DocAppointments /> : <AppointmentsPage />}
+          />
+          <Route
+            path="/appointments/booking"
+            element={<AppointmentBooking />}
+          />
+          <Route
+            path="/appointments/preview"
+            element={<AppointmentPreview />}
+          />
           <Route path="/sessions" element={<AppointmentList />} />
           <Route path="/pharmacy" element={<PharmacyPage />} />
-          <Route path="/pharmacy-details/:pharmacyName" element={<PharmacyDetails />} />
-          <Route path="/medicines" element={<Medicines />} /> {/* ✅ Added Medicines route */}
+          <Route
+            path="/pharmacy-details/:pharmacyName"
+            element={<PharmacyDetails />}
+          />
+          <Route path="/medicines" element={<Medicines />} />{" "}
+          {/* ✅ Added Medicines route */}
         </Routes>
       </div>
     </Router>

@@ -77,7 +77,7 @@ function Home() {
           </p>
           <button className="book-button">Book Appointment</button>
         </div>
-        <div className="hero-image">
+        <div className="hero-image1">
           <img
             src={process.env.PUBLIC_URL + "/assets/stet1.png"}
             alt="Stethoscope"
@@ -97,7 +97,10 @@ function Home() {
           </div>
         </Link>
 
-        <div className="feature-card">
+        <div
+          className="feature-card"
+          onClick={() => navigate("/messages/consultation")}
+        >
           <img
             src={process.env.PUBLIC_URL + "/assets/Consultation.png"}
             alt="Consultation"
@@ -106,9 +109,9 @@ function Home() {
           <p>Talk to a specialist</p>
         </div>
 
-        <div 
-          className="feature-card" 
-          onClick={() => navigate("/Pharmacy")} 
+        <div
+          className="feature-card"
+          onClick={() => navigate("/pharmacy")}
           style={{ cursor: "pointer" }}
         >
           <img

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { PaystackButton } from "react-paystack";
 import { useNavigate } from "react-router-dom";
-import "./Payment.css";
+import "./PaymentProcess.css";
 
-const Payment = () => {
+const PaymentProcess = () => {
   const publicKey = "pk_live_71d65eb541776517545a57459c6bd666bd630181";
   const navigate = useNavigate();
 
@@ -18,9 +18,12 @@ const Payment = () => {
   const [totalAmount, setTotalAmount] = useState(0);
 
   useEffect(() => {
-    const storedCart = JSON.parse(localStorage.getItem("selectedMedicines")) || [];
+    const storedCart =
+      JSON.parse(localStorage.getItem("selectedMedicines")) || [];
     setCart(storedCart);
-    setTotalAmount(storedCart.reduce((sum, item) => sum + Number(item.price), 0));
+    setTotalAmount(
+      storedCart.reduce((sum, item) => sum + Number(item.price), 0)
+    );
   }, []);
 
   const handleChange = (e) => {
@@ -57,7 +60,9 @@ const Payment = () => {
       {/* Header */}
       <div className="receipt-header">
         <h2>Pharmacy Receipt</h2>
-        <span className="close-button" onClick={() => navigate(-1)}>X</span>
+        <span className="close-button" onClick={() => navigate(-1)}>
+          X
+        </span>
       </div>
 
       {/* Billing & Delivery */}
@@ -67,7 +72,12 @@ const Payment = () => {
           <label>Full Name:</label>
           <input type="text" name="fullName" onChange={handleChange} required />
           <label>Phone Number:</label>
-          <input type="text" name="phoneNumber" onChange={handleChange} required />
+          <input
+            type="text"
+            name="phoneNumber"
+            onChange={handleChange}
+            required
+          />
           <label>Email:</label>
           <input type="email" name="email" onChange={handleChange} required />
           <h3>Delivery Details:</h3>
@@ -104,7 +114,13 @@ const Payment = () => {
 
       {/* Footer (Payment Buttons) */}
       <div className="receipt-footer">
-        <button className="pay-later" onClick={() => alert("Payment postponed")}>
+        <button
+          className="pay-later"
+          onClick={() => {
+            alert("payment postponed");
+            setTimeout(navigate("/payments"), 3000);
+          }}
+        >
           Pay Later
         </button>
         <div onClick={handlePayment}>
@@ -115,4 +131,4 @@ const Payment = () => {
   );
 };
 
-export default Payment;
+export default PaymentProcess;
