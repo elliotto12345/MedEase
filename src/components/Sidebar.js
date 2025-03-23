@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import "./Sidebar.css";
 
 const Sidebar = () => {
-  const doctor = true;
+  const doctor = false;
   const location = useLocation();
   let routeName = location.pathname;
   const [isOpen, setIsOpen] = useState(false);

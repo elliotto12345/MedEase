@@ -1,12 +1,12 @@
-import Payment from "../components/Payment"; // Import Payment component
-import "../components/Payment.css"; // Import Payment styles
+// import "../components/Payment.css"; // Import Payment styles
+import Payments from "../components/Payments";
 import Sidebar from "../components/Sidebar";
 
 const PaymentPage = () => {
   return (
     <div style={{ display: "flex" }}>
       <Sidebar />
-      <Payment />
+      <Payments />
     </div>
   );
 };

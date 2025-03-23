@@ -97,7 +97,10 @@ function Home() {
           </div>
         </Link>
 
-        <div className="feature-card">
+        <div
+          className="feature-card"
+          onClick={() => navigate("/messages/consultation")}
+        >
           <img
             src={process.env.PUBLIC_URL + "/assets/Consultation.png"}
             alt="Consultation"
@@ -108,7 +111,7 @@ function Home() {
 
         <div
           className="feature-card"
-          onClick={() => navigate("/Pharmacy")}
+          onClick={() => navigate("/pharmacy")}
           style={{ cursor: "pointer" }}
         >
           <img

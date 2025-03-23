@@ -18,9 +18,10 @@ import PharmacyPage from "./pages/PharmacyPage";
 import SettingsPage from "./pages/SettingsPage"; // ✅ Fixed typo in import
 import SignupPage from "./pages/SignupPage";
 import DocAppointments from "./components/DocAppointments";
+import PaymentProcess from "./components/PaymentProcess";
 
 function App() {
-  const doctor = true;
+  const doctor = false;
   return (
     <Router>
       <div className="app">
@@ -30,6 +31,7 @@ function App() {
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/password-reset" element={<PasswordResetPage />} />
           <Route path="/payments" element={<PaymentsPage />} />
+          <Route path="/paymentprocess" element={<PaymentProcess />} />
           <Route path="/settings" element={<SettingsPage />} />{" "}
           {/* ✅ Fixed SettingsPage */}
           <Route path="/messages" element={<MessagesPage />} />

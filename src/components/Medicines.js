@@ -87,7 +87,7 @@ const MedicinePage = () => {
       return;
     }
     localStorage.setItem("selectedMedicines", JSON.stringify(cart));
-    navigate("/payments");
+    navigate("/paymentprocess");
   };
 
   return (

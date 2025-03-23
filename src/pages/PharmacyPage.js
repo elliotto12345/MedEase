@@ -1,11 +1,9 @@
-import Messages from "../components/Pharmacy";
-import Sidebar from "../components/Sidebar";
+import Pharmacy from "../components/Pharmacy";
 
 const PharmacyPage = () => {
   return (
     <div style={{ display: "flex" }}>
-      <Sidebar />
-      <Messages />
+      <Pharmacy />
     </div>
   );
 };
