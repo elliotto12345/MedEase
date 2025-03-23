@@ -1,9 +1,42 @@
-import React from "react";
+import { getAuth, onAuthStateChanged } from "firebase/auth"; // Import auth functions
+import { doc, getDoc } from "firebase/firestore";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { db } from "../firebaseConfig";
 import "./Home.css";
 
 function Home() {
   const navigate = useNavigate();
+  const [userName, setUserName] = useState(""); // Store user's full name
+
+  useEffect(() => {
+    const auth = getAuth(); // Get Firebase auth instance
+
+    // Listen for authentication state changes
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        // User is logged in, fetch their data from Firestore
+        try {
+          const userDocRef = doc(db, "users", user.uid);
+          const userSnap = await getDoc(userDocRef);
+
+          if (userSnap.exists()) {
+            const userData = userSnap.data();
+            setUserName(`${userData.firstName} ${userData.lastName}`);
+          } else {
+            console.log("User data not found in Firestore!");
+          }
+        } catch (error) {
+          console.error("Error fetching user data:", error);
+        }
+      } else {
+        // No user is logged in
+        setUserName("Guest");
+      }
+    });
+
+    return () => unsubscribe(); // Cleanup listener on unmount
+  }, []);
 
   const currentDate = new Date()
     .toLocaleDateString("en-GB", {
@@ -36,7 +69,7 @@ function Home() {
 
       <section className="hero-section">
         <div className="hero-content">
-          <h1 className="hero-title">Hello Group 16</h1>
+          <h1 className="hero-title">Hello {userName}</h1>
           <p>
             We are committed to prioritising your health. Remember staying
             healthy is a step away from sickness. Book an appointment now to
@@ -73,7 +106,6 @@ function Home() {
           <p>Talk to a specialist</p>
         </div>
 
-        {/* ✅ Updated Pharmacy Card with onClick Navigation */}
         <div 
           className="feature-card" 
           onClick={() => navigate("/Pharmacy")} 

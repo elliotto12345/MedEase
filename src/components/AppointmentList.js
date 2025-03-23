@@ -1,58 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './AppointmentList.css';
 
 const AppointmentList = () => {
   const navigate = useNavigate();
-
-  const appointments = [
-    {
-      status: 'Pending',
-      date: '20th February',
-      time: '09:30 AM',
-      details: 'Dental appointment',
-      id: 1
-    },
-    {
-      status: 'Pending',
-      date: '16th February',
-      time: '05:30 AM',
-      details: 'Dialysis appointment',
-      id: 2
-    },
-    {
-      status: 'Success',
-      date: '14th February',
-      time: '09:30 AM',
-      details: 'Cardiology appointment',
-      id: 3
-    },
-    {
-      status: 'Success',
-      date: '7th February',
-      time: '05:30 AM',
-      details: 'Dialysis appointment',
-      id: 4
-    },
-    {
-      status: 'Success',
-      date: '5th February',
-      time: '10:30 AM',
-      details: 'Dental appointment',
-      id: 5
-    },
-    {
-      status: 'Success',
-      date: '1st February',
-      time: '10:30 AM',
-      details: 'CheckUp appointment',
-      id: 6
-    }
-  ];
+  const [appointments, setAppointments] = useState([
+    { status: 'Pending', date: '20th February', time: '09:30 AM', details: 'Dental appointment', id: 1 },
+    { status: 'Pending', date: '16th February', time: '05:30 AM', details: 'Dialysis appointment', id: 2 },
+    { status: 'Success', date: '14th February', time: '09:30 AM', details: 'Cardiology appointment', id: 3 },
+    { status: 'Success', date: '7th February', time: '05:30 AM', details: 'Dialysis appointment', id: 4 },
+    { status: 'Success', date: '5th February', time: '10:30 AM', details: 'Dental appointment', id: 5 },
+    { status: 'Success', date: '1st February', time: '10:30 AM', details: 'CheckUp appointment', id: 6 }
+  ]);
 
   const handleDelete = (id) => {
-    // Handle delete functionality
-    console.log('Delete appointment:', id);
+    setAppointments(appointments.filter(appointment => appointment.id !== id));
   };
 
   return (
@@ -100,4 +62,4 @@ const AppointmentList = () => {
   );
 };
 
-export default AppointmentList; 
+export default AppointmentList;
