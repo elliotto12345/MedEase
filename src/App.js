@@ -1,4 +1,6 @@
-import React from "react";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { doc, getDoc, getFirestore } from "firebase/firestore";
+import React, { useEffect, useState } from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import "./App.css";
 import AppointmentBooking from "./components/AppointmentBooking";
@@ -6,8 +8,12 @@ import AppointmentList from "./components/AppointmentList";
 import AppointmentPreview from "./components/AppointmentPreview";
 import ChatSession from "./components/ChatSession";
 import Consultation from "./components/Consultation";
-import Medicines from "./components/Medicines"; // ✅ Import Medicines Page
+import DocAppointments from "./components/DocAppointments";
+import DocHome from "./components/DocHome";
+import Medicines from "./components/Medicines";
+import PaymentProcess from "./components/PaymentProcess";
 import PharmacyDetails from "./components/PharmacyDetails";
+import Receipts from "./components/Receipts";
 import AppointmentsPage from "./pages/AppointmentsPage";
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
@@ -15,14 +21,43 @@ import MessagesPage from "./pages/MessagesPage";
 import PasswordResetPage from "./pages/PasswordResetPage";
 import PaymentsPage from "./pages/PaymentsPage";
 import PharmacyPage from "./pages/PharmacyPage";
-import SettingsPage from "./pages/SettingsPage"; // ✅ Fixed typo in import
+import SettingsPage from "./pages/SettingsPage";
 import SignupPage from "./pages/SignupPage";
-import DocAppointments from "./components/DocAppointments";
-import PaymentProcess from "./components/PaymentProcess";
-import Receipts from "./components/Receipts";
 
 function App() {
-  const doctor = false;
+  const [doctor, setDoctor] = useState(false); // Start as false
+  const [loading, setLoading] = useState(true); // Start as true
+
+  useEffect(() => {
+    const auth = getAuth();
+    const db = getFirestore();
+
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        const userRef = doc(db, "users", user.uid);
+        const userSnap = await getDoc(userRef);
+
+        if (userSnap.exists()) {
+          const userData = userSnap.data();
+          console.log("User Data:", userData); // Debugging
+          setDoctor(userData.role === "doctor");
+        } else {
+          console.log("User document does not exist.");
+        }
+      } else {
+        console.log("No authenticated user.");
+        setDoctor(false);
+      }
+      setLoading(false); // Ensure loading is set to false after checking
+    });
+
+    return () => unsubscribe();
+  }, []);
+
+  if (loading) {
+    return <p>Loading...</p>; // Prevents rendering before user role is fetched
+  }
+
   return (
     <Router>
       <div className="app">
@@ -34,31 +69,18 @@ function App() {
           <Route path="/payments" element={<PaymentsPage />} />
           <Route path="/receipts" element={<Receipts />} />
           <Route path="/paymentprocess" element={<PaymentProcess />} />
-          <Route path="/settings" element={<SettingsPage />} />{" "}
-          {/* ✅ Fixed SettingsPage */}
+          <Route path="/settings" element={<SettingsPage />} />
           <Route path="/messages" element={<MessagesPage />} />
           <Route path="/messages/chat" element={<ChatSession />} />
           <Route path="/messages/consultation" element={<Consultation />} />
-          <Route
-            path="/appointments"
-            element={doctor ? <DocAppointments /> : <AppointmentsPage />}
-          />
-          <Route
-            path="/appointments/booking"
-            element={<AppointmentBooking />}
-          />
-          <Route
-            path="/appointments/preview"
-            element={<AppointmentPreview />}
-          />
+          <Route path="/appointments" element={doctor ? <DocAppointments /> : <AppointmentsPage />} />
+          <Route path="/appointments/booking" element={<AppointmentBooking />} />
+          <Route path="/appointments/preview" element={<AppointmentPreview />} />
           <Route path="/sessions" element={<AppointmentList />} />
           <Route path="/pharmacy" element={<PharmacyPage />} />
-          <Route
-            path="/pharmacy-details/:pharmacyName"
-            element={<PharmacyDetails />}
-          />
-          <Route path="/medicines" element={<Medicines />} />{" "}
-          {/* ✅ Added Medicines route */}
+          <Route path="/pharmacy-details/:pharmacyName" element={<PharmacyDetails />} />
+          <Route path="/medicines" element={<Medicines />} />
+          <Route path="/doctor/home" element={<DocHome />} />
         </Routes>
       </div>
     </Router>

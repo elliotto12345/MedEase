@@ -1,14 +1,15 @@
 import React from "react";
+import DocHome from "../components/DocHome";
 import Footer from "../components/Footer";
 import Home from "../components/Home";
-import DocHome from "../components/DocHome";
 import LandingPage from "../components/LandingPage";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 
 const HomePage = () => {
-  const singIn = false;
-  const doctor = false;
+  const singIn = true;
+
+  const doctor = true;
   return (
     <>
       {singIn ? (
