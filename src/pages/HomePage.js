@@ -8,7 +8,8 @@ import Sidebar from "../components/Sidebar";
 
 const HomePage = () => {
   const singIn = true;
-  const doctor = false;
+
+  const doctor = true;
   return (
     <>
       {singIn ? (
