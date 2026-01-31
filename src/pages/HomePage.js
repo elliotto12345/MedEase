@@ -7,7 +7,7 @@ import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 
 const HomePage = () => {
-  const singIn = true;
+  const singIn = false;
 
   const doctor = true;
   return (

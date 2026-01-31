@@ -12,18 +12,25 @@
   right: 0;
 }
 
-.logo,
-.nav-links {
+.logo {
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  padding-left: 80px;
 }
 
 .logo img {
   width: 75px;
   height: auto;
   object-fit: contain;
+}
+
+.nav-links {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .nav-links ul {
@@ -60,10 +67,10 @@
 
 .status .sign-up {
   background-color: inherit;
-  color: purple;
+  color: #667eea;
 }
 
 .status .log-in {
-  background-color: purple;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
 }

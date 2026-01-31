@@ -34,7 +34,7 @@
   width: 25%;
   font-weight: bold;
   color: white;
-  background-color: purple;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   border: none;
   border-radius: 5px;
 }
@@ -126,7 +126,7 @@
   width: 20%;
   padding: 15px;
   color: white;
-  background-color: purple;
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
   border-radius: 5px;
   border: none;
   font-weight: bold;
@@ -165,7 +165,7 @@
 }
 
 .dashboard .text p:nth-child(2) {
-  color: purple;
+  color: #667eea;
   margin-bottom: 8px;
 }
 
@@ -231,7 +231,7 @@
 
 .write-up button {
   width: 25%;
-  background-color: purple;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   border: none;
   border-radius: 5px;
   padding: 20px;
@@ -258,10 +258,243 @@
   align-items: center;
   gap: 10px;
   font-size: 18px;
-  background-color: purple;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   text-align: center;
   border: none;
   border-radius: 5px;
   padding: 15px;
   color: white;
+}
+
+/* FAQ Section */
+.faq {
+  width: 100%;
+  padding: 50px 15px;
+  background: linear-gradient(135deg, #f0f4ff 0%, #e8ecff 100%);
+}
+
+.faq-container {
+  max-width: 1050px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.faq-container h2 {
+  text-align: center;
+  font-size: 32px;
+  font-weight: bold;
+  color: #667eea;
+  margin-bottom: 20px;
+}
+
+.faq-item {
+  background: white;
+  border-radius: 8px;
+  padding: 25px 30px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  border-left: 4px solid transparent;
+  border-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-image-slice: 1;
+}
+
+.faq-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
+  border-left-color: #667eea;
+}
+
+.faq-item h3 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 12px;
+  color: #667eea;
+}
+
+.faq-item p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #667eea;
+  margin: 0;
+}
+
+/* Responsive FAQ */
+@media (max-width: 900px) {
+  .faq {
+    padding: 40px 20px;
+  }
+  
+  .faq-container h2 {
+    font-size: 28px;
+  }
+  
+  .faq-item {
+    padding: 20px;
+  }
+  
+  .faq-item h3 {
+    font-size: 18px;
+  }
+  
+  .faq-item p {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 600px) {
+  .faq-container h2 {
+    font-size: 24px;
+  }
+  
+  .faq-item {
+    padding: 15px;
+  }
+  
+  .faq-item h3 {
+    font-size: 16px;
+  }
+  
+  .faq-item p {
+    font-size: 14px;
+  }
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  /* About Section */
+  .about .desc {
+    flex-direction: column;
+    padding: 20px;
+  }
+  
+  .about .desc .left {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .left .large {
+    font-size: 28px;
+    letter-spacing: 2px;
+  }
+  
+  .left button {
+    width: 60%;
+    padding: 15px;
+  }
+  
+  .desc .image img {
+    width: 100%;
+    max-width: 350px;
+  }
+  
+  .desc-text p {
+    font-size: 18px;
+    padding: 0 20px;
+  }
+  
+  /* Service Section */
+  .service .cards {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+  
+  .service .cards .card {
+    width: 100%;
+    max-width: 350px;
+  }
+  
+  .service .info {
+    flex-direction: column;
+    padding: 20px;
+  }
+  
+  .info .image {
+    width: 100%;
+  }
+  
+  .info .right {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .right button {
+    width: 40%;
+  }
+  
+  /* Testimonial Section */
+  .testimonial .dashboard {
+    flex-direction: column;
+    padding: 40px 20px;
+  }
+  
+  .testimonial .dashboard .text,
+  .testimonial .dashboard .stats {
+    width: 100%;
+    padding-left: 0;
+    text-align: center;
+  }
+  
+  .stats .one-row {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .privacy-policy {
+    flex-direction: column;
+    padding: 20px;
+  }
+  
+  .privacy-policy .image {
+    width: 100%;
+  }
+  
+  .privacy-policy .write-up {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .write-up button {
+    width: 40%;
+  }
+  
+  /* Demo Section */
+  .demo {
+    padding: 40px 20px;
+  }
+  
+  .demo p {
+    font-size: 24px;
+    text-align: center;
+  }
+  
+  /* FAQ Section */
+  .faq {
+    padding: 40px 20px;
+  }
+  
+  .faq-container {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .left .large {
+    font-size: 24px;
+  }
+  
+  .left button {
+    width: 80%;
+  }
+  
+  .right button,
+  .write-up button {
+    width: 60%;
+  }
+  
+  .demo button {
+    flex-direction: column;
+    padding: 20px;
+  }
 }

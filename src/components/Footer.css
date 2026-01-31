@@ -5,11 +5,11 @@
 }
 
 .signIn-bg {
-  background-color: rgb(105, 103, 103);
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
 }
 
 .signOut-bg {
-  background-color: purple;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 
 .footer .bottom {

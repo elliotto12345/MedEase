@@ -5,7 +5,7 @@ import Footer from "./Footer";
 const Home = () => {
   return (
     <div className="landing-page">
-      <div className="about">
+      <div id="about" className="about">
         <div className="desc">
           <div className="left">
             <p className="large">
@@ -29,7 +29,7 @@ const Home = () => {
           </p>
         </div>
       </div>
-      <div className="service">
+      <div id="service" className="service">
         <p className="header"> What you get when you register with us?</p>
         <div className="cards">
           <div className="card">
@@ -80,7 +80,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <div className="testimonial">
+      <div id="testimonial" className="testimonial">
         <div className="dashboard">
           <div className="text">
             <p>Helping our patients</p>
@@ -142,6 +142,27 @@ const Home = () => {
               always.
             </p>
             <button>Learn More</button>
+          </div>
+        </div>
+      </div>
+      <div id="faq" className="faq">
+        <div className="faq-container">
+          <h2>Frequently Asked Questions</h2>
+          <div className="faq-item">
+            <h3>How do I book an appointment?</h3>
+            <p>You can book an appointment by logging into your account and selecting your preferred healthcare professional from our directory.</p>
+          </div>
+          <div className="faq-item">
+            <h3>Is my medical data secure?</h3>
+            <p>Yes, all your medical data is encrypted and stored securely. We comply with HIPAA and GDPR regulations.</p>
+          </div>
+          <div className="faq-item">
+            <h3>How can I contact my doctor?</h3>
+            <p>You can use our secure messaging feature to communicate directly with your healthcare provider.</p>
+          </div>
+          <div className="faq-item">
+            <h3>What services do you offer?</h3>
+            <p>We offer appointment booking, secure messaging, prescription management, and access to your medical records.</p>
           </div>
         </div>
       </div>
