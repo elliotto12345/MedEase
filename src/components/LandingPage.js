@@ -147,22 +147,71 @@ const Home = () => {
       </div>
       <div id="faq" className="faq">
         <div className="faq-container">
-          <h2>Frequently Asked Questions</h2>
-          <div className="faq-item">
-            <h3>How do I book an appointment?</h3>
-            <p>You can book an appointment by logging into your account and selecting your preferred healthcare professional from our directory.</p>
+          <div className="faq-header">
+            <h2>Frequently Asked Questions</h2>
+            <p>Find answers to common questions about MedEase</p>
           </div>
-          <div className="faq-item">
-            <h3>Is my medical data secure?</h3>
-            <p>Yes, all your medical data is encrypted and stored securely. We comply with HIPAA and GDPR regulations.</p>
-          </div>
-          <div className="faq-item">
-            <h3>How can I contact my doctor?</h3>
-            <p>You can use our secure messaging feature to communicate directly with your healthcare provider.</p>
-          </div>
-          <div className="faq-item">
-            <h3>What services do you offer?</h3>
-            <p>We offer appointment booking, secure messaging, prescription management, and access to your medical records.</p>
+          
+          <div className="faq-grid">
+            <div className="faq-card">
+              <div className="faq-icon">
+                <span>📅</span>
+              </div>
+              <div className="faq-content">
+                <h3>How do I book an appointment?</h3>
+                <p>You can book an appointment by logging into your account and selecting your preferred healthcare professional from our directory. Choose your preferred date and time, and confirm your booking instantly.</p>
+              </div>
+            </div>
+
+            <div className="faq-card">
+              <div className="faq-icon">
+                <span>🔒</span>
+              </div>
+              <div className="faq-content">
+                <h3>Is my medical data secure?</h3>
+                <p>Yes, all your medical data is encrypted and stored securely. We comply with HIPAA and GDPR regulations, ensuring your information remains confidential and protected at all times.</p>
+              </div>
+            </div>
+
+            <div className="faq-card">
+              <div className="faq-icon">
+                <span>💬</span>
+              </div>
+              <div className="faq-content">
+                <h3>How can I contact my doctor?</h3>
+                <p>You can use our secure messaging feature to communicate directly with your healthcare provider. Send messages, share documents, and receive timely responses from your medical team.</p>
+              </div>
+            </div>
+
+            <div className="faq-card">
+              <div className="faq-icon">
+                <span>🏥</span>
+              </div>
+              <div className="faq-content">
+                <h3>What services do you offer?</h3>
+                <p>We offer appointment booking, secure messaging, prescription management, video consultations, and access to your medical records - all in one comprehensive platform.</p>
+              </div>
+            </div>
+
+            <div className="faq-card">
+              <div className="faq-icon">
+                <span>💊</span>
+              </div>
+              <div className="faq-content">
+                <h3>Can I order prescriptions online?</h3>
+                <p>Yes, you can order prescriptions through our platform. Your doctor can send prescriptions directly to your preferred pharmacy, and you'll receive notifications when ready.</p>
+              </div>
+            </div>
+
+            <div className="faq-card">
+              <div className="faq-icon">
+                <span>📱</span>
+              </div>
+              <div className="faq-content">
+                <h3>Is there a mobile app available?</h3>
+                <p>Yes! MedEase is available on both iOS and Android. Download our app to access all features on the go, including appointments, messaging, and medical records.</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
