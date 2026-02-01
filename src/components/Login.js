@@ -33,51 +33,92 @@ const Login = () => {
   };
 
   return (
-    <div className="login">
-      <div className="image">
-        <img src="/assets/login.png" alt="login" />
-      </div>
-      <div className="form">
-        <h1>
-          Med<span style={{ color: "purple" }}>Ease</span> Login
-        </h1>
-        {error && <p style={{ color: "red" }}>{error}</p>}
-        <form onSubmit={handleLogin}>
-          <div>
-            <input
-              type="email"
-              placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
+    <div className="login-page">
+      <div className="login-container">
+        <div className="login-left">
+          <div className="login-header">
+            <div className="logo">
+              <h1>
+                Med<span style={{ color: "#667eea", paddingRight: "5px" }}>Ease</span>
+              </h1>
+              <p>Welcome Back to Your Healthcare Journey</p>
+            </div>
           </div>
-          <div className="password-field">
-            <input
-              type={showPassword ? "text" : "password"}
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-            <img
-              src={showPassword ? "/assets/show.png" : "/assets/hide.png"}
-              onClick={() => setShowPassword(!showPassword)}
-              alt={showPassword ? "show" : "hide"}
-              width={30}
-              height={30}
-              style={{ cursor: "pointer" }}
-            />
+          
+          <div className="login-form">
+            <h2>Sign In</h2>
+            <p className="form-subtitle">Access your MedEase account</p>
+            
+            {error && <div className="error-message">{error}</div>}
+            
+            <form onSubmit={handleLogin}>
+              <div className="form-group">
+                <label>Email Address</label>
+                <input
+                  type="email"
+                  placeholder="Enter your email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
+              </div>
+
+              <div className="form-group">
+                <label>Password</label>
+                <div className="password-input">
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    placeholder="Enter your password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                  />
+                  <button
+                    type="button"
+                    className="toggle-password"
+                    onClick={() => setShowPassword(!showPassword)}
+                  >
+                    {showPassword ? "👁️" : "👁️‍🗨️"}
+                  </button>
+                </div>
+              </div>
+
+              <div className="form-options">
+                <Link to="/password-reset" className="forgot-password">
+                  Forgot Password?
+                </Link>
+              </div>
+
+              <button type="submit" className="login-btn">
+                Sign In
+                <span>→</span>
+              </button>
+
+              <div className="divider">
+                <span>OR</span>
+              </div>
+
+              <div className="social-login">
+                <button type="button" className="social-btn google">
+                  <span className="social-icon">G</span>
+                  Continue with Google
+                </button>
+                <button type="button" className="social-btn apple">
+                  <span className="social-icon">🍎</span>
+                  Continue with Apple
+                </button>
+              </div>
+
+              <div className="signup-prompt">
+                Don't have an account? <Link to="/signup">Sign Up</Link>
+              </div>
+            </form>
           </div>
-          <Link to="/password-reset">Forgot Password?</Link>
-          <button type="submit">Login</button>
-        </form>
-        <p>
-          Don't have an account yet?{" "}
-          <Link to="/signup" style={{ color: "purple" }}>
-            Sign up
-          </Link>
-        </p>
+        </div>
+
+        <div className="login-right">
+          <img src="/assets/login.png" alt="login illustration" className="login-image-full" />
+        </div>
       </div>
     </div>
   );
